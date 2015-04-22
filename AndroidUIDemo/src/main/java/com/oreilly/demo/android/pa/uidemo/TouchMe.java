@@ -151,73 +151,73 @@ public class TouchMe extends Activity {
         setContentView(R.layout.main);
 
         // find the dots view
-        dotView = (DotView) findViewById(R.id.dots);
-        dotView.setDots(dotModel);
-
-        dotView.setOnCreateContextMenuListener(this);
-        dotView.setOnTouchListener(new TrackingTouchListener(dotModel));
-
-        dotView.setOnKeyListener(new OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (KeyEvent.ACTION_DOWN != event.getAction()) {
-                    return false;
-                }
-
-                int color;
-                switch (keyCode) {
-                    case KeyEvent.KEYCODE_SPACE:
-                        color = Color.MAGENTA;
-                        break;
-                    case KeyEvent.KEYCODE_ENTER:
-                        color = Color.BLUE;
-                        break;
-                    default:
-                        return false;
-                }
-
-                makeDot(dotModel, dotView, color);
-
-                return true;
-            } });
-
-
-        dotView.setOnFocusChangeListener(new OnFocusChangeListener() {
-            @Override public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus && (null != dotGenerator)) {
-                    dotGenerator.done();
-                    dotGenerator = null;
-                }
-                else if (hasFocus && (null == dotGenerator)) {
-                    dotGenerator
-                    = new DotGenerator(dotModel, dotView, Color.BLACK);
-                    new Thread(dotGenerator).start();
-                }
-            } });
-
-        // wire up the controller
-        ((Button) findViewById(R.id.button1)).setOnClickListener(
-            new Button.OnClickListener() {
-                @Override public void onClick(View v) {
-                    makeDot(dotModel, dotView, Color.RED);
-                } });
-        ((Button) findViewById(R.id.button2)).setOnClickListener(
-            new Button.OnClickListener() {
-                @Override public void onClick(View v) {
-                    makeDot(dotModel, dotView, Color.GREEN);
-                } });
-
-        final EditText tb1 = (EditText) findViewById(R.id.text1);
-        final EditText tb2 = (EditText) findViewById(R.id.text2);
-        dotModel.setDotsChangeListener(new Dots.DotsChangeListener() {
-            @Override public void onDotsChange(Dots dots) {
-                Dot d = dots.getLastDot();
-                // This code makes the UI unacceptably unresponsive.
-                // ... investigating - in March, 2014, this was not a problem
-                tb1.setText((null == d) ? "" : String.valueOf(d.getX())); // uncommented
-                tb2.setText((null == d) ? "" : String.valueOf(d.getY())); // uncommented
-                dotView.invalidate();
-            } });
+//        dotView = (DotView) findViewById(R.id.dots);
+//        dotView.setDots(dotModel);
+//
+//        dotView.setOnCreateContextMenuListener(this);
+//        dotView.setOnTouchListener(new TrackingTouchListener(dotModel));
+//
+//        dotView.setOnKeyListener(new OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                if (KeyEvent.ACTION_DOWN != event.getAction()) {
+//                    return false;
+//                }
+//
+//                int color;
+//                switch (keyCode) {
+//                    case KeyEvent.KEYCODE_SPACE:
+//                        color = Color.MAGENTA;
+//                        break;
+//                    case KeyEvent.KEYCODE_ENTER:
+//                        color = Color.BLUE;
+//                        break;
+//                    default:
+//                        return false;
+//                }
+//
+//                makeDot(dotModel, dotView, color);
+//
+//                return true;
+//            } });
+//
+//
+//        dotView.setOnFocusChangeListener(new OnFocusChangeListener() {
+//            @Override public void onFocusChange(View v, boolean hasFocus) {
+//                if (!hasFocus && (null != dotGenerator)) {
+//                    dotGenerator.done();
+//                    dotGenerator = null;
+//                }
+//                else if (hasFocus && (null == dotGenerator)) {
+//                    dotGenerator
+//                    = new DotGenerator(dotModel, dotView, Color.BLACK);
+//                    new Thread(dotGenerator).start();
+//                }
+//            } });
+//
+//        // wire up the controller
+//        ((Button) findViewById(R.id.button1)).setOnClickListener(
+//            new Button.OnClickListener() {
+//                @Override public void onClick(View v) {
+//                    makeDot(dotModel, dotView, Color.RED);
+//                } });
+//        ((Button) findViewById(R.id.button2)).setOnClickListener(
+//            new Button.OnClickListener() {
+//                @Override public void onClick(View v) {
+//                    makeDot(dotModel, dotView, Color.GREEN);
+//                } });
+//
+//        final EditText tb1 = (EditText) findViewById(R.id.text1);
+//        final EditText tb2 = (EditText) findViewById(R.id.text2);
+//        dotModel.setDotsChangeListener(new Dots.DotsChangeListener() {
+//            @Override public void onDotsChange(Dots dots) {
+//                Dot d = dots.getLastDot();
+//                // This code makes the UI unacceptably unresponsive.
+//                // ... investigating - in March, 2014, this was not a problem
+//                tb1.setText((null == d) ? "" : String.valueOf(d.getX())); // uncommented
+//                tb2.setText((null == d) ? "" : String.valueOf(d.getY())); // uncommented
+//                dotView.invalidate();
+//            } });
     }
 
     /** Install an options menu. */
