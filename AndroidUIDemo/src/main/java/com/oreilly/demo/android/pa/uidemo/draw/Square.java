@@ -3,7 +3,7 @@ package com.oreilly.demo.android.pa.uidemo.draw;
 /**
  * Created by Salomon on 4/22/15.
  */
-public class Square implements DrawShape {
+public class Square implements DrawableObj {
 
     private int width;
     private int height;

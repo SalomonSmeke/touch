@@ -3,7 +3,7 @@ package com.oreilly.demo.android.pa.uidemo.draw;
 /**
  * Created by Salomon on 4/22/15.
  */
-public class Line implements DrawShape {
+public class Line implements DrawableObj {
 
     private int x1 = 0;
     private int x2 = 0;

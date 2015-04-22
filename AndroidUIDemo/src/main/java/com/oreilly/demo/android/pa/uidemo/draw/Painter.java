@@ -1,9 +1,16 @@
 package com.oreilly.demo.android.pa.uidemo.draw;
 
+import android.graphics.Canvas;
+
 /**
  * Created by Salomon on 4/22/15.
  */
-public class CanvasManager implements Visitor<Void>{
+public class Painter implements Visitor<Void>{
+
+
+    public Painter(){
+
+    }
 
     public Void onLine(Line l){
 
