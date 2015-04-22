@@ -9,8 +9,10 @@ import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.oreilly.demo.android.pa.uidemo.draw.Painter;
 import com.oreilly.demo.android.pa.uidemo.model.Dot;
 import com.oreilly.demo.android.pa.uidemo.model.Dots;
+import com.oreilly.demo.android.pa.uidemo.state.StateWrapper;
 
 
 /**
@@ -63,16 +65,22 @@ public class DotView extends View {
         paint.setColor(hasFocus() ? Color.BLUE : Color.GRAY);
         canvas.drawRect(0, 0, getWidth() - 1, getHeight() -1, paint);
 
-        if (null == dots) { return; }
+//        if (null == dots) { return; }
 
         paint.setStyle(Style.FILL);
-        for (Dot dot : dots.getDots()) {
-            paint.setColor(dot.getColor());
-            canvas.drawCircle(
-                dot.getX(),
-                dot.getY(),
-                dot.getDiameter(),
-                paint);
-        }
+        Painter painter = new Painter(canvas);
+        StateWrapper wrapper = new StateWrapper(painter);
+
+
+
+
+//        for (Dot dot : dots.getDots()) {
+//            paint.setColor(dot.getColor());
+//            canvas.drawCircle(
+//                dot.getX(),
+//                dot.getY(),
+//                dot.getDiameter(),
+//                paint);
+//        }
     }
 }

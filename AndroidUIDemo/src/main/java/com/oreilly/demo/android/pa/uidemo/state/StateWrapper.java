@@ -2,30 +2,47 @@ package com.oreilly.demo.android.pa.uidemo.state;
 
 import android.os.Bundle;
 
+import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
+import com.oreilly.demo.android.pa.uidemo.draw.Painter;
+
+import java.util.Vector;
+
 /**
  * Created by Salomon on 4/22/15.
  */
 public class StateWrapper {
     //Initial State
-    private State currentState = null;
+    private State currentState = new Menu();
+    private Painter painter;
+    public StateWrapper(Painter painter){
+        this.painter = painter;
+        start(1080, 1920);
+    }
 
+    private int width;
+    private int height;
 
     //State actions
-    public void start()  { currentState.start();}
+    public void start(int width, int height)  { draw(currentState.start(width, height));}
     public void tap() { currentState.tap();}
     public void tick() { currentState.tick();}
     public Bundle save(Bundle bundle) { return currentState.save(bundle);}
-    public void load(Bundle bundle) { currentState.load(bundle);}
+    public void load(Bundle bundle) { currentState.load(width, height, bundle);}
+    public void draw(Vector<DrawableObj> DrawMe){
+        for (int i = 0; i < DrawMe.size(); i++){
+            DrawMe.get(i).accept(painter);
+        }
+    };
 
     //State transitions
     public void toMenu(){ currentState = new Menu();
-    currentState.start();}
+    currentState.start(width, height);}
     public void toSelect(){ currentState = new Select();
-    currentState.start();}
+    currentState.start(width, height);}
     public void toGame(){ currentState = new Game();
-    currentState.start();}
+    currentState.start(width, height);}
     public void toEnd(){ currentState = new End();
-    currentState.start();}
+    currentState.start(width, height);}
 
     //State saving
     //TODO Loading & Saving States
