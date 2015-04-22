@@ -17,8 +17,6 @@ import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.oreilly.demo.android.pa.uidemo.model.Dot;
 import com.oreilly.demo.android.pa.uidemo.model.Dots;
@@ -151,50 +149,50 @@ public class TouchMe extends Activity {
         setContentView(R.layout.main);
 
         // find the dots view
-//        dotView = (DotView) findViewById(R.id.dots);
-//        dotView.setDots(dotModel);
-//
-//        dotView.setOnCreateContextMenuListener(this);
-//        dotView.setOnTouchListener(new TrackingTouchListener(dotModel));
-//
-//        dotView.setOnKeyListener(new OnKeyListener() {
-//            @Override
-//            public boolean onKey(View v, int keyCode, KeyEvent event) {
-//                if (KeyEvent.ACTION_DOWN != event.getAction()) {
-//                    return false;
-//                }
-//
-//                int color;
-//                switch (keyCode) {
-//                    case KeyEvent.KEYCODE_SPACE:
-//                        color = Color.MAGENTA;
-//                        break;
-//                    case KeyEvent.KEYCODE_ENTER:
-//                        color = Color.BLUE;
-//                        break;
-//                    default:
-//                        return false;
-//                }
-//
-//                makeDot(dotModel, dotView, color);
-//
-//                return true;
-//            } });
-//
-//
-//        dotView.setOnFocusChangeListener(new OnFocusChangeListener() {
-//            @Override public void onFocusChange(View v, boolean hasFocus) {
-//                if (!hasFocus && (null != dotGenerator)) {
-//                    dotGenerator.done();
-//                    dotGenerator = null;
-//                }
-//                else if (hasFocus && (null == dotGenerator)) {
-//                    dotGenerator
-//                    = new DotGenerator(dotModel, dotView, Color.BLACK);
-//                    new Thread(dotGenerator).start();
-//                }
-//            } });
-//
+        dotView = (DotView) findViewById(R.id.dots);
+        dotView.setDots(dotModel);
+
+        dotView.setOnCreateContextMenuListener(this);
+        dotView.setOnTouchListener(new TrackingTouchListener(dotModel));
+
+        dotView.setOnKeyListener(new OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (KeyEvent.ACTION_DOWN != event.getAction()) {
+                    return false;
+                }
+
+                int color;
+                switch (keyCode) {
+                    case KeyEvent.KEYCODE_SPACE:
+                        color = Color.MAGENTA;
+                        break;
+                    case KeyEvent.KEYCODE_ENTER:
+                        color = Color.BLUE;
+                        break;
+                    default:
+                        return false;
+                }
+
+                makeDot(dotModel, dotView, color);
+
+                return true;
+            } });
+
+
+        dotView.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus && (null != dotGenerator)) {
+                    dotGenerator.done();
+                    dotGenerator = null;
+                }
+                else if (hasFocus && (null == dotGenerator)) {
+                    dotGenerator
+                    = new DotGenerator(dotModel, dotView, Color.BLACK);
+                    new Thread(dotGenerator).start();
+                }
+            } });
+
 //        // wire up the controller
 //        ((Button) findViewById(R.id.button1)).setOnClickListener(
 //            new Button.OnClickListener() {

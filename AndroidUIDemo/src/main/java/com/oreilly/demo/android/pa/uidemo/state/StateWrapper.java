@@ -1,11 +1,13 @@
 package com.oreilly.demo.android.pa.uidemo.state;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
 import com.oreilly.demo.android.pa.uidemo.draw.Painter;
 
 import java.util.Vector;
+
 
 /**
  * Created by Salomon on 4/22/15.
@@ -14,13 +16,17 @@ public class StateWrapper {
     //Initial State
     private State currentState = new Menu();
     private Painter painter;
-    public StateWrapper(Painter painter){
-        this.painter = painter;
-        start(1080, 1920);
-    }
-
     private int width;
     private int height;
+
+    public StateWrapper(Painter painter, int width, int height){
+        this.painter = painter;
+        this.width = width;
+        this.height = height;
+        start(width, height);
+    }
+
+
 
     //State actions
     public void start(int width, int height)  { draw(currentState.start(width, height));}

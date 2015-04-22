@@ -60,16 +60,9 @@ public class DotView extends View {
      * @see android.view.View#onDraw(android.graphics.Canvas)
      */
     @Override protected void onDraw(Canvas canvas) {
-        Paint paint = new Paint();
-        paint.setStyle(Style.STROKE);
-        paint.setColor(hasFocus() ? Color.BLUE : Color.GRAY);
-        canvas.drawRect(0, 0, getWidth() - 1, getHeight() -1, paint);
 
-//        if (null == dots) { return; }
-
-        paint.setStyle(Style.FILL);
         Painter painter = new Painter(canvas);
-        StateWrapper wrapper = new StateWrapper(painter);
+        StateWrapper wrapper = new StateWrapper(painter, getWidth(), getHeight());
 
 
 
