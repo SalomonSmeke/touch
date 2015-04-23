@@ -3,7 +3,7 @@ package com.oreilly.demo.android.pa.uidemo.state;
 import android.os.Bundle;
 
 import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
-import com.oreilly.demo.android.pa.uidemo.draw.Square;
+import com.oreilly.demo.android.pa.uidemo.draw.SquareF;
 
 import java.util.Vector;
 
@@ -43,7 +43,7 @@ public class Select extends State {
         toDraw.clear();
 
         for (int i = 0; i < 3; i++){
-            toDraw.add(new Square((int)(width-used),(int)(height-used)/3,(int)(used2*percBorder),(int)(used2*percBorder)+((int)(height-used)/3*(i)),clrs.get(i)));
+            toDraw.add(new SquareF((int)(width-used),(int)(height-used)/3,(int)(used2*percBorder),(int)(used2*percBorder)+((int)(height-used)/3*(i)),clrs.get(i)));
         }
 
         //TODO: make code for level select menu

@@ -8,5 +8,6 @@ public interface Visitor<Result> {
 	Result onLine(Line l);
 	Result onSprite(Sprite sp);
 	Result onSquare(Square sq);
+    Result onSquareF(SquareF sq);
 	Result onText(Text t);
 }

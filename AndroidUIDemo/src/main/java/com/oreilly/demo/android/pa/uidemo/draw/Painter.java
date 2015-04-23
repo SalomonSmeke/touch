@@ -36,6 +36,19 @@ public class Painter implements Visitor<Void>{
         float left = sq.getX();
         float right = sq.getX()+sq.getWidth();
         int [] c = sq.getC();
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setARGB(c[0],c[1],c[2],c[3]);
+        canvas.drawRect(left,top,right,bottom,paint);
+        return null;
+    }
+
+    public Void onSquareF(SquareF sq){
+        float top = sq.getY();
+        float bottom = sq.getY()+sq.getHeight();
+        float left = sq.getX();
+        float right = sq.getX()+sq.getWidth();
+        int [] c = sq.getC();
+        paint.setStyle(Paint.Style.FILL_AND_STROKE);
         paint.setARGB(c[0],c[1],c[2],c[3]);
         canvas.drawRect(left,top,right,bottom,paint);
         return null;
