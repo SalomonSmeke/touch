@@ -6,7 +6,6 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ContextMenu;
@@ -19,10 +18,8 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
 
-import com.oreilly.demo.android.pa.uidemo.draw.Painter;
 import com.oreilly.demo.android.pa.uidemo.model.Dot;
 import com.oreilly.demo.android.pa.uidemo.model.Dots;
-import com.oreilly.demo.android.pa.uidemo.state.StateWrapper;
 import com.oreilly.demo.android.pa.uidemo.view.DotView;
 
 
@@ -33,7 +30,6 @@ public class TouchMe extends Activity {
     /** Dot diameter */
     public static final int DOT_DIAMETER = 6;
 
-    private Canvas canvas;
     /** Listen for taps. */
     private static final class TrackingTouchListener
         implements View.OnTouchListener
@@ -66,12 +62,12 @@ public class TouchMe extends Activity {
                     for (Integer i: tracks) {
                         idx = evt.findPointerIndex(i.intValue());
                         for (int j = 0; j < n; j++) {
-//                            addDot(
-//                                mDots,
-//                                evt.getHistoricalX(idx, j),
-//                                evt.getHistoricalY(idx, j),
-//                                evt.getHistoricalPressure(idx, j),
-//                                evt.getHistoricalSize(idx, j));
+                            addDot(
+                                mDots,
+                                evt.getHistoricalX(idx, j),
+                                evt.getHistoricalY(idx, j),
+                                evt.getHistoricalPressure(idx, j),
+                                evt.getHistoricalSize(idx, j));
                         }
                     }
                     break;
@@ -83,15 +79,23 @@ public class TouchMe extends Activity {
 
             for (Integer i: tracks) {
                 idx = evt.findPointerIndex(i.intValue());
-//                addDot(
-//                    mDots,
-//                    evt.getX(idx),
-//                    evt.getY(idx),
-//                    evt.getPressure(idx),
-//                    evt.getSize(idx));
+                addDot(
+                    mDots,
+                    evt.getX(idx),
+                    evt.getY(idx),
+                    evt.getPressure(idx),
+                    evt.getSize(idx));
             }
 
             return true;
+        }
+
+        private void addDot(Dots dots, float x, float y, float p, float s) {
+            dots.addDot(
+                x,
+                y,
+                Color.CYAN,
+                (int) ((p + 0.5) * (s + 0.5) * DOT_DIAMETER));
         }
     }
 
@@ -144,11 +148,9 @@ public class TouchMe extends Activity {
         // install the view
         setContentView(R.layout.main);
 
-        Painter painter = new Painter(canvas);
-        StateWrapper wrapper = new StateWrapper(painter, dotView.getWidth(), dotView.getHeight());
-
         // find the dots view
         dotView = (DotView) findViewById(R.id.dots);
+        dotView.setDots(dotModel);
 
         dotView.setOnCreateContextMenuListener(this);
         dotView.setOnTouchListener(new TrackingTouchListener(dotModel));
