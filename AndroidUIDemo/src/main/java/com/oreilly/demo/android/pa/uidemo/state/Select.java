@@ -36,17 +36,14 @@ public class Select extends State {
         }
 
         Vector<int []> clrs = new Vector<int[]>();
-        clrs.add(new int[]{255,255,0,0});
-        clrs.add(new int[]{255,0,255,0});
-        clrs.add(new int[]{255,0,0,255});
+        clrs.add(new int[]{255,26,250,170});
+        clrs.add(new int[]{255,26,211,111});
+        clrs.add(new int[]{255,205,105,26});
 
         toDraw.clear();
-
+        toDraw.add(new SquareF(width,height,0,0,new int[]{255,255,255,255,255}));
         for (int i = 0; i < 3; i++){
             toDraw.add(new SquareF((int)(width-used),(int)(height-used)/3,(int)(used2*percBorder),(int)(used2*percBorder)+((int)(height-used)/3*(i)),clrs.get(i)));
         }
-
-        //TODO: make code for level select menu
-
     }
 }
