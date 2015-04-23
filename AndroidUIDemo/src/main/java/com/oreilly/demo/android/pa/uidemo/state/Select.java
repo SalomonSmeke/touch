@@ -10,10 +10,18 @@ import java.util.Vector;
 /**
  * Created by Salomon on 4/22/15.
  */
-public class Select extends State {
+public class Select implements State {
+
+
+    public Select(final StateView sm) {
+        this.sm = sm;
+    }
+
+    private final StateView sm;
+
     public Vector<DrawableObj> start(int width, int height)  { this.width = width; this.height = height; DrawSelect(); return toDraw;  }
-    public void tap()  { }
-    public void tick()  { }
+    public Vector<DrawableObj>  tap(double x, double y)  { return null; }
+    public Vector<DrawableObj>  tick()  { return  null; }
     public Bundle save(Bundle bundle) { return bundle; }
     public Vector<DrawableObj> load(int width, int height, Bundle bundle) { this.width = width; this.height = height; DrawSelect(); return toDraw;  }
 

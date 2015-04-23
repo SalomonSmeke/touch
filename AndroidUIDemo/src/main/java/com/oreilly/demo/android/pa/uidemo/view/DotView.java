@@ -63,15 +63,9 @@ public class DotView extends View {
 
         Painter painter = new Painter(canvas);
         StateWrapper wrapper = new StateWrapper(painter, getWidth(), getHeight());
-//        for (Dot dot : dots.getDots()) {
-//            paint.setColor(dot.getColor());
-//            canvas.drawCircle(
-//                dot.getX(),
-//                dot.getY(),
-//                dot.getDiameter(),
-//                paint);
-//        }
     }
 
+    private void tap(){
 
+    }
 }

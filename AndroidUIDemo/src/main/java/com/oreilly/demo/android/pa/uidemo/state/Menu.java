@@ -8,25 +8,26 @@ import com.oreilly.demo.android.pa.uidemo.draw.Square;
 /**
  * Created by Salomon on 4/22/15.
  */
-public class Menu extends State {
+public class Menu implements State{
+
+
+    public Menu(final StateView sm) {
+        this.sm = sm;
+    }
+
+    private final StateView sm;
 
     private int width = 0;
     private int height = 0;
-
-    public Vector<DrawableObj> start(int width, int height)  { this.width = width; this.height = height; DrawMenu(); return toDraw; }
-    public void tap()  { }
-    public void tick()  { }
-    public Bundle save(Bundle bundle) { return bundle; }
-    public Vector<DrawableObj> load(int width, int height, Bundle bundle) { this.width = width; this.height = height; DrawMenu(); return toDraw;  }
-
     private Vector<DrawableObj> toDraw = new Vector<DrawableObj>();
 
-    //TODO What the screen will contain.
-    private void DrawObjects(){
-        double percBorder = .1;
-        //toDraw.add(new Square((int)(width-2*(width*percBorder)),(int)(height-2*(width*percBorder)),(int)(width*percBorder),(int)(width*percBorder)), "#aaaaaa");
-
-    }
+    public Vector<DrawableObj> start(int width, int height)  { this.width = width; this.height = height; DrawMenu(); return toDraw; }
+    public Vector<DrawableObj> tap(double x, double y)  { if (inArea()) {
+        sm.toSelect();
+    } return null;}
+    public Vector<DrawableObj>  tick()  { return null; }
+    public Bundle save(Bundle bundle) { return bundle; }
+    public Vector<DrawableObj> load(int width, int height, Bundle bundle) { this.width = width; this.height = height; DrawMenu(); return toDraw; }
 
     private void DrawMenu(){
         double percBorder = .1;
@@ -42,9 +43,11 @@ public class Menu extends State {
             used2 = width;
         }
         toDraw.clear();
-        //toDraw.add(new Square((int)(width-used),(int)(height-used),(int)(used2*percBorder),(int)(used2*percBorder)), "#aaaaaa");
-
+        toDraw.add(new Square((int)(width-used),(int)(height-used),(int)(used2*percBorder),(int)(used2*percBorder), new int[]{255,255,255,255}));
     }
 
+    private boolean inArea(){
+        return true;
+    }
 
 }

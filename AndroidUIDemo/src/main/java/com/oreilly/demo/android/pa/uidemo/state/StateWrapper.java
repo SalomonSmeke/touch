@@ -12,9 +12,9 @@ import java.util.Vector;
 /**
  * Created by Salomon on 4/22/15.
  */
-public class StateWrapper {
+public class StateWrapper implements StateOverlord {
     //Initial State
-    private State currentState = new Select();
+    private State currentState = new Menu(this);
     private Painter painter;
     private int width;
     private int height;
@@ -26,11 +26,9 @@ public class StateWrapper {
         start(width, height);
     }
 
-
-
     //State actions
     public void start(int width, int height)  { draw(currentState.start(width, height));}
-    public void tap() { currentState.tap();}
+    public void tap() { currentState.tap(0,0);}
     public void tick() { currentState.tick();}
     public Bundle save(Bundle bundle) { return currentState.save(bundle);}
     public void load(Bundle bundle) { currentState.load(width, height, bundle);}
@@ -40,15 +38,26 @@ public class StateWrapper {
         }
     };
 
+    private State state;
+
+    private final State MENU     = new Menu(this);
+    private final State SELECT     = new Select(this);
+    private final State GAME = new Game(this);
+    private final State END = new End(this);
+
+    protected void setState(final State state) {
+        this.state = state;
+    }
+
+
     //State transitions
-    public void toMenu(){ currentState = new Menu();
-    currentState.start(width, height);}
-    public void toSelect(){ currentState = new Select();
-    currentState.start(width, height);}
-    public void toGame(){ currentState = new Game();
-    currentState.start(width, height);}
-    public void toEnd(){ currentState = new End();
-    currentState.start(width, height);}
+    public void toMenu(){ setState(MENU);}
+
+    public void toSelect(){ setState(SELECT);}
+
+    public void toGame(){ setState(GAME);}
+
+    public void toEnd(){ setState(END);}
 
     //State saving
     //TODO Loading & Saving States
