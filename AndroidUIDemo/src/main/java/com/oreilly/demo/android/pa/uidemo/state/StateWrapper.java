@@ -18,6 +18,7 @@ public class StateWrapper {
     private Painter painter;
     private int width;
     private int height;
+    Vector<DrawableObj> DrawMe = new Vector<DrawableObj>();
 
     public StateWrapper(Painter painter, int width, int height){
         this.painter = painter;
@@ -29,15 +30,13 @@ public class StateWrapper {
 
 
     //State actions
-    public void start(int width, int height)  { draw(currentState.start(width, height));}
+    public void start(int width, int height)  { DrawMe = (currentState.start(width, height));}
     public void tap() { currentState.tap();}
     public void tick() { currentState.tick();}
     public Bundle save(Bundle bundle) { return currentState.save(bundle);}
     public void load(Bundle bundle) { currentState.load(width, height, bundle);}
-    public void draw(Vector<DrawableObj> DrawMe){
-        for (int i = 0; i < DrawMe.size(); i++){
-            DrawMe.get(i).accept(painter);
-        }
+    public Vector<DrawableObj> getDrawMe(){
+        return DrawMe;
     };
 
     //State transitions

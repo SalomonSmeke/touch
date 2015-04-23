@@ -9,10 +9,13 @@ import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
 import com.oreilly.demo.android.pa.uidemo.draw.Painter;
 import com.oreilly.demo.android.pa.uidemo.model.Dot;
 import com.oreilly.demo.android.pa.uidemo.model.Dots;
 import com.oreilly.demo.android.pa.uidemo.state.StateWrapper;
+
+import java.util.Vector;
 
 
 /**
@@ -51,29 +54,14 @@ public class DotView extends View {
         setFocusableInTouchMode(true);
     }
 
-    /**
-     * @param dots
-     */
-    public void setDots(Dots dots) { this.dots = dots; }
 
     /**
      * @see android.view.View#onDraw(android.graphics.Canvas)
      */
-    @Override protected void onDraw(Canvas canvas) {
-
-        Painter painter = new Painter(canvas);
-        StateWrapper wrapper = new StateWrapper(painter, getWidth(), getHeight());
-
-
-
-
-//        for (Dot dot : dots.getDots()) {
-//            paint.setColor(dot.getColor());
-//            canvas.drawCircle(
-//                dot.getX(),
-//                dot.getY(),
-//                dot.getDiameter(),
-//                paint);
-//        }
+    protected void onDraw(StateWrapper state, Painter painter) {
+        Vector<DrawableObj> DrawMe = state.getDrawMe();
+        for (int i = 0; i < DrawMe.size(); i++){
+            DrawMe.get(i).accept(painter);
+        }
     }
 }
