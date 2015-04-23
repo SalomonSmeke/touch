@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.WindowManager;
+import android.view.Window;
 import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -145,6 +147,9 @@ public class TouchMe extends Activity {
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);
 
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // install the view
         setContentView(R.layout.main);
 
@@ -217,46 +222,46 @@ public class TouchMe extends Activity {
 //                dotView.invalidate();
 //            } });
     }
-
-    /** Install an options menu. */
-    @Override public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.simple_menu, menu);
-        return true;
-    }
-
-    /** Respond to an options menu selection. */
-    @Override public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_clear:
-                dotModel.clearDots();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    /** Install a context menu. */
-    @Override public void onCreateContextMenu(
-        ContextMenu menu,
-        View v,
-        ContextMenuInfo menuInfo)
-    {
-        menu.add(Menu.NONE, 1, Menu.NONE, "Clear")
-            .setAlphabeticShortcut('x');
-    }
-
-    /** Respond to a context menu selection. */
-    @Override public boolean onContextItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case 1:
-                dotModel.clearDots();
-                return true;
-            default: ;
-        }
-
-        return false;
-    }
+//
+//    /** Install an options menu. */
+//    @Override public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.simple_menu, menu);
+//        return true;
+//    }
+//
+//    /** Respond to an options menu selection. */
+//    @Override public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.menu_clear:
+//                dotModel.clearDots();
+//                return true;
+//
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
+//
+//    /** Install a context menu. */
+//    @Override public void onCreateContextMenu(
+//        ContextMenu menu,
+//        View v,
+//        ContextMenuInfo menuInfo)
+//    {
+//        menu.add(Menu.NONE, 1, Menu.NONE, "Clear")
+//            .setAlphabeticShortcut('x');
+//    }
+//
+//    /** Respond to a context menu selection. */
+//    @Override public boolean onContextItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case 1:
+//                dotModel.clearDots();
+//                return true;
+//            default: ;
+//        }
+//
+//        return false;
+//    }
 
     /**
      * @param dots the dots we're drawing

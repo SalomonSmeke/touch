@@ -14,6 +14,8 @@ public class Painter implements Visitor<Void>{
     public Painter(final Canvas canvas){
         this.canvas = canvas;
         paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(5);
+        paint.setColor(android.graphics.Color.WHITE);
     }
 
     public Void onLine(Line l){
