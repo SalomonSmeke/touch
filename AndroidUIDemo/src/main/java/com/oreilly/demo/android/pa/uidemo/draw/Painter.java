@@ -35,8 +35,9 @@ public class Painter implements Visitor<Void>{
         float bottom = sq.getY()+sq.getHeight();
         float left = sq.getX();
         float right = sq.getX()+sq.getWidth();
+        int [] c = sq.getC();
+        paint.setARGB(c[0],c[1],c[2],c[3]);
         canvas.drawRect(left,top,right,bottom,paint);
-
         return null;
     }
 

@@ -14,7 +14,7 @@ import java.util.Vector;
  */
 public class StateWrapper {
     //Initial State
-    private State currentState = new Menu();
+    private State currentState = new Select();
     private Painter painter;
     private int width;
     private int height;

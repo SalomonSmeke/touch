@@ -9,10 +9,12 @@ public class Square implements DrawableObj {
     private int height;
     private int x;
     private int y;
+    private int[] c;
 
-    public Square(int width, int height, int x, int y){
+    public Square(int width, int height, int x, int y, int[] c){
         this.width = width;
         this.height = height;
+        this.c = c;
         this.x = x;
         this.y = y;
     }
@@ -33,6 +35,8 @@ public class Square implements DrawableObj {
         this.y = y;
     }
 
+    public void setC (int[] c) { this.c = c; }
+
     public int getWidth (){
         return width;
     }
@@ -48,6 +52,8 @@ public class Square implements DrawableObj {
     public int getX (){
         return x;
     }
+
+    public int[] getC () { return c; }
 
     public <Result> Result accept(final Visitor<Result> v) {
         return v.onSquare(this);

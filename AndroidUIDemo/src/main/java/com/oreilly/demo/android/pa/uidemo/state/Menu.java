@@ -24,7 +24,7 @@ public class Menu extends State {
     //TODO What the screen will contain.
     private void DrawObjects(){
         double percBorder = .1;
-        toDraw.add(new Square((int)(width-2*(width*percBorder)),(int)(height-2*(width*percBorder)),(int)(width*percBorder),(int)(width*percBorder)));
+        //toDraw.add(new Square((int)(width-2*(width*percBorder)),(int)(height-2*(width*percBorder)),(int)(width*percBorder),(int)(width*percBorder)), "#aaaaaa");
 
     }
 
@@ -42,7 +42,7 @@ public class Menu extends State {
             used2 = width;
         }
         toDraw.clear();
-        toDraw.add(new Square((int)(width-used),(int)(height-used),(int)(used2*percBorder),(int)(used2*percBorder)));
+        //toDraw.add(new Square((int)(width-used),(int)(height-used),(int)(used2*percBorder),(int)(used2*percBorder)), "#aaaaaa");
 
     }
 

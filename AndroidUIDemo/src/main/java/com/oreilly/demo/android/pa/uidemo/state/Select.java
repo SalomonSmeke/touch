@@ -11,11 +11,11 @@ import java.util.Vector;
  * Created by Salomon on 4/22/15.
  */
 public class Select extends State {
-    public Vector<DrawableObj> start(int width, int height)  { return null; }
+    public Vector<DrawableObj> start(int width, int height)  { this.width = width; this.height = height; DrawSelect(); return toDraw;  }
     public void tap()  { }
     public void tick()  { }
     public Bundle save(Bundle bundle) { return bundle; }
-    public Vector<DrawableObj> load(int width, int height, Bundle bundle) { return null; }
+    public Vector<DrawableObj> load(int width, int height, Bundle bundle) { this.width = width; this.height = height; DrawSelect(); return toDraw;  }
 
     private int width = 0;
     private int height = 0;
@@ -34,8 +34,17 @@ public class Select extends State {
             used = widthBased;
             used2 = width;
         }
+
+        Vector<int []> clrs = new Vector<int[]>();
+        clrs.add(new int[]{255,255,0,0});
+        clrs.add(new int[]{255,0,255,0});
+        clrs.add(new int[]{255,0,0,255});
+
         toDraw.clear();
-        toDraw.add(new Square((int)(width-used),(int)(height-used),(int)(used2*percBorder),(int)(used2*percBorder)));
+
+        for (int i = 0; i < 3; i++){
+            toDraw.add(new Square((int)(width-used),(int)(height-used)/3,(int)(used2*percBorder),(int)(used2*percBorder)+((int)(height-used)/3*(i)),clrs.get(i)));
+        }
 
         //TODO: make code for level select menu
 
