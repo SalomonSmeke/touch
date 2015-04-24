@@ -32,8 +32,18 @@ public class TouchMe extends Activity {
     /** Dot diameter */
     public static final int DOT_DIAMETER = 6;
 
+
+    /** The application model */
+    final Dots dotModel = new Dots();
+
+    /** The application view */
+    DotView dotView;
+
+    /** The dot generator */
+    DotGenerator dotGenerator;
+
     /** Listen for taps. */
-    private static final class TrackingTouchListener
+    private final class TrackingTouchListener
         implements View.OnTouchListener
     {
         private final Dots mDots;
@@ -56,7 +66,8 @@ public class TouchMe extends Activity {
                 case MotionEvent.ACTION_POINTER_UP:
                     idx = (action & MotionEvent.ACTION_POINTER_INDEX_MASK)
                         >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
-                    tracks.remove(Integer.valueOf(evt.getPointerId(idx)));
+                    dotView.tap();
+//                    tracks.remove(Integer.valueOf(evt.getPointerId(idx)));
                     break;
 
                 case MotionEvent.ACTION_MOVE:
@@ -134,14 +145,6 @@ public class TouchMe extends Activity {
 
     private final Random rand = new Random();
 
-    /** The application model */
-    final Dots dotModel = new Dots();
-
-    /** The application view */
-    DotView dotView;
-
-    /** The dot generator */
-    DotGenerator dotGenerator;
 
     /** Called when the activity is first created. */
     @Override public void onCreate(Bundle state) {

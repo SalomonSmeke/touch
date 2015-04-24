@@ -67,7 +67,7 @@ public class DotView extends View {
         wrapper = new StateWrapper(painter, getWidth(), getHeight());
     }
 
-    private void tap(){
+    public void tap(){
         wrapper.tap();
     }
 }
