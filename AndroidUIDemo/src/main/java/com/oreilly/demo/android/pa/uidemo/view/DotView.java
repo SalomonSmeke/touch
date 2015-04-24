@@ -22,6 +22,8 @@ import com.oreilly.demo.android.pa.uidemo.state.StateWrapper;
  */
 public class DotView extends View {
 
+    private Painter painter;
+    private StateWrapper wrapper;
     private volatile Dots dots;
 
     /**
@@ -61,11 +63,11 @@ public class DotView extends View {
      */
     @Override protected void onDraw(Canvas canvas) {
 
-        Painter painter = new Painter(canvas);
-        StateWrapper wrapper = new StateWrapper(painter, getWidth(), getHeight());
+        painter = new Painter(canvas);
+        wrapper = new StateWrapper(painter, getWidth(), getHeight());
     }
 
     private void tap(){
-
+        wrapper.tap();
     }
 }
