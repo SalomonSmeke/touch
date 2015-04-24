@@ -33,20 +33,24 @@ public class StateWrapper implements StateOverlord {
     public Bundle save(Bundle bundle) { return currentState.save(bundle);}
     public void load(Bundle bundle) { currentState.load(width, height, bundle);}
     public void draw(Vector<DrawableObj> DrawMe){
+
         for (int i = 0; i < DrawMe.size(); i++){
             DrawMe.get(i).accept(painter);
+
         }
     };
 
     private State state;
 
-    private final State MENU     = new Menu(this);
-    private final State SELECT     = new Select(this);
+    private final State MENU = new Menu(this);
+    private State SELECT = new Select(this);
     private final State GAME = new Game(this);
     private final State END = new End(this);
 
     protected void setState(final State state) {
-        this.state = state;
+        this.currentState = state;
+        this.draw(currentState.start(width, height));
+        painter.clear();
     }
 
 

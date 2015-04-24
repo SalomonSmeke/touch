@@ -61,12 +61,12 @@ public class TouchMe extends Activity {
                     idx = (action & MotionEvent.ACTION_POINTER_INDEX_MASK)
                         >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
                     tracks.add(Integer.valueOf(evt.getPointerId(idx)));
+                    dotView.tap();
                     break;
 
                 case MotionEvent.ACTION_POINTER_UP:
                     idx = (action & MotionEvent.ACTION_POINTER_INDEX_MASK)
                         >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
-                    dotView.tap();
 //                    tracks.remove(Integer.valueOf(evt.getPointerId(idx)));
                     break;
 

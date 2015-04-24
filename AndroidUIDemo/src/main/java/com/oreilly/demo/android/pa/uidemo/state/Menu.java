@@ -43,7 +43,9 @@ public class Menu implements State{
             used2 = width;
         }
         toDraw.clear();
-        toDraw.add(new Square((int)(width-used),(int)(height-used),(int)(used2*percBorder),(int)(used2*percBorder), new int[]{255,255,255,255}));
+        toDraw.add(new Square((int) (width - used), (int) (height - used), (int) (used2 * percBorder), (int) (used2 * percBorder), new int[]{255, 255, 255, 255}));
+        toDraw.add(new Square((int)(width-used + 20),(int)(height-used + 20),(int)(used2*percBorder - 10),(int)(used2*percBorder - 10), new int[]{255,255,255,255}));
+        toDraw.add(new Square((int)(width-used - 20),(int)(height-used - 20),(int)(used2*percBorder + 10),(int)(used2*percBorder + 10), new int[]{255,255,255,255}));
     }
 
     private boolean inArea(){

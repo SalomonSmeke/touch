@@ -1,6 +1,7 @@
 package com.oreilly.demo.android.pa.uidemo.draw;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 
 /**
@@ -16,6 +17,11 @@ public class Painter implements Visitor<Void>{
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(5);
         paint.setColor(android.graphics.Color.WHITE);
+    }
+
+    public void clear(){
+        canvas.drawColor(Color.BLACK);
+        canvas.restore();
     }
 
     public Void onLine(Line l){
