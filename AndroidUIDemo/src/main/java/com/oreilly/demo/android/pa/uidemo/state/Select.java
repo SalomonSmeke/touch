@@ -52,6 +52,7 @@ public class Select implements State {
         toDraw.add(new SquareF(width,height,0,0,new int[]{255,255,255,255,255}));
         for (int i = 0; i < 3; i++){
             toDraw.add(new SquareF((int)(width-used),(int)(height-used)/3,(int)(used2*percBorder),(int)(used2*percBorder)+((int)(height-used)/3*(i)),clrs.get(i)));
+//
         }
     }
 }

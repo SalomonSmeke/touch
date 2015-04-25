@@ -9,19 +9,14 @@ import android.graphics.Paint;
  */
 public class Painter implements Visitor<Void>{
 
-    private final Canvas canvas;
-    private final Paint paint = new Paint();
+    private static Canvas canvas;
+    private Paint paint = new Paint();
 
     public Painter(final Canvas canvas){
         this.canvas = canvas;
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(5);
         paint.setColor(android.graphics.Color.WHITE);
-    }
-
-    public void clear(){
-        canvas.drawColor(Color.BLACK);
-        canvas.restore();
     }
 
     public Void onLine(Line l){

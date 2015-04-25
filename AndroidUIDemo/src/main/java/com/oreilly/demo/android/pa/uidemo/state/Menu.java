@@ -10,7 +10,6 @@ import com.oreilly.demo.android.pa.uidemo.draw.Square;
  */
 public class Menu implements State{
 
-
     public Menu(final StateView sm) {
         this.sm = sm;
     }

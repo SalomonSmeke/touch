@@ -25,6 +25,7 @@ public class DotView extends View {
     private Painter painter;
     private StateWrapper wrapper;
     private volatile Dots dots;
+    private Canvas canvas;
 
     /**
      * @param context the rest of the application
@@ -62,12 +63,19 @@ public class DotView extends View {
      * @see android.view.View#onDraw(android.graphics.Canvas)
      */
     @Override protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+//        super.onDraw(canvas);
         painter = new Painter(canvas);
-        wrapper = new StateWrapper(painter, getWidth(), getHeight());
+        if (wrapper == null){
+            wrapper = new StateWrapper(painter, getWidth(), getHeight());
+        }
+        wrapper.setPainter(painter);
+        wrapper.draw();
     }
 
-    public void tap(){
-        wrapper.tap();
+    public void invalidate(String s){
+        if (s=="TAP"){
+            wrapper.tap();
+            this.invalidate();
+        }
     }
 }

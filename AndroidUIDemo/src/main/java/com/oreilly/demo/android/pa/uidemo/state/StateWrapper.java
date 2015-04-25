@@ -14,12 +14,14 @@ import java.util.Vector;
  */
 public class StateWrapper implements StateOverlord {
     //Initial State
-    private State currentState = new Menu(this);
-    private Painter painter;
+    private State currentState;
+    private static Painter painter;
     private int width;
     private int height;
+    private Vector<DrawableObj> DrawMe = null;
 
-    public StateWrapper(Painter painter, int width, int height){
+    public StateWrapper (Painter painter, int width, int height){
+        currentState = MENU;
         this.painter = painter;
         this.width = width;
         this.height = height;
@@ -27,30 +29,29 @@ public class StateWrapper implements StateOverlord {
     }
 
     //State actions
-    public void start(int width, int height)  { draw(currentState.start(width, height));}
+    public void start(int width, int height)  { DrawMe = currentState.start(width, height);}
     public void tap() { currentState.tap(0,0);}
     public void tick() { currentState.tick();}
     public Bundle save(Bundle bundle) { return currentState.save(bundle);}
     public void load(Bundle bundle) { currentState.load(width, height, bundle);}
-    public void draw(Vector<DrawableObj> DrawMe){
-
+    public void draw(){
         for (int i = 0; i < DrawMe.size(); i++){
             DrawMe.get(i).accept(painter);
-
         }
     };
 
-    private State state;
+    public void setPainter(Painter painter){
+        this.painter = painter;
+    }
 
     private final State MENU = new Menu(this);
-    private State SELECT = new Select(this);
+    private final State SELECT = new Select(this);
     private final State GAME = new Game(this);
     private final State END = new End(this);
 
     protected void setState(final State state) {
         this.currentState = state;
-        this.draw(currentState.start(width, height));
-        painter.clear();
+        this.start(width,height);
     }
 
 
