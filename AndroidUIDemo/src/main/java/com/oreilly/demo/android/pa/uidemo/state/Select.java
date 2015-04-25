@@ -44,9 +44,9 @@ public class Select implements State {
         }
 
         Vector<int []> clrs = new Vector<int[]>();
-        clrs.add(new int[]{255,26,250,170});
-        clrs.add(new int[]{255,26,211,111});
-        clrs.add(new int[]{255,205,105,26});
+        clrs.add(new int[]{255,46,250,170});
+        clrs.add(new int[]{255,26,211,246});
+        clrs.add(new int[]{255,255,105,85});
 
         toDraw.clear();
         toDraw.add(new SquareF(width,height,0,0,new int[]{255,255,255,255,255}));
