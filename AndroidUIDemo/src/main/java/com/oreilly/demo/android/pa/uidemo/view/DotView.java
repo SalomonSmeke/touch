@@ -62,7 +62,7 @@ public class DotView extends View {
      * @see android.view.View#onDraw(android.graphics.Canvas)
      */
     @Override protected void onDraw(Canvas canvas) {
-
+        super.onDraw(canvas);
         painter = new Painter(canvas);
         wrapper = new StateWrapper(painter, getWidth(), getHeight());
     }
