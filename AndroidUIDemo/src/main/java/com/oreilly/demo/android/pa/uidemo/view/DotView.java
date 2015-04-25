@@ -25,7 +25,6 @@ public class DotView extends View {
     private Painter painter;
     private StateWrapper wrapper;
     private volatile Dots dots;
-    private Canvas canvas;
 
     /**
      * @param context the rest of the application
