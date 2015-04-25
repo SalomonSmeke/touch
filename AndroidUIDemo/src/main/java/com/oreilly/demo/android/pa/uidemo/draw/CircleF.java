@@ -3,28 +3,22 @@ package com.oreilly.demo.android.pa.uidemo.draw;
 /**
  * Created by Salomon on 4/22/15.
  */
-public class Square implements DrawableObj {
+public class CircleF implements DrawableObj {
 
-    private int width;
-    private int height;
+    private int radius;
     private int x;
     private int y;
     private int[] c;
 
-    public Square(int width, int height, int x, int y, int[] c){
-        this.width = width;
-        this.height = height;
+    public CircleF(int radius, int x, int y, int[] c){
+        this.radius = radius;
         this.c = c;
         this.x = x;
         this.y = y;
     }
 
-    public void setWidth (int width){
-        this.width = width;
-    }
-
-    public void setHeight (int height){
-        this.height = height;
+    public void setRadius (int radius){
+        this.radius = radius;
     }
 
     public void setX (int x){
@@ -37,12 +31,8 @@ public class Square implements DrawableObj {
 
     public void setC (int[] c) { this.c = c; }
 
-    public int getWidth (){
-        return width;
-    }
-
-    public int getHeight (){
-        return height;
+    public int getRadius (){
+        return radius;
     }
 
     public int getY (){
@@ -60,6 +50,6 @@ public class Square implements DrawableObj {
     }
 
     public <Result> Result accept(final Visitor<Result> v) {
-        return v.onSquare(this);
+        return v.onCircleF(this);
     }
 }

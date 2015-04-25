@@ -5,9 +5,15 @@ import java.util.List;
 import java.util.Random;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.WindowManager;
 import android.view.Window;
 import android.view.ContextMenu;
@@ -19,16 +25,27 @@ import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.oreilly.demo.android.pa.uidemo.model.Dot;
 import com.oreilly.demo.android.pa.uidemo.model.Dots;
 import com.oreilly.demo.android.pa.uidemo.view.DotView;
 
 
+
 /**
  * Android UI demo program
  */
 public class TouchMe extends Activity {
+
+    private long startTime = 0L;
+    private Handler customHandler = new Handler();
+    long timeInMilliseconds = 0L;
+    long timeSwapBuff = 0L;
+
+    long updatedTime = 0L;
+
     /** Dot diameter */
     public static final int DOT_DIAMETER = 6;
 
@@ -42,12 +59,13 @@ public class TouchMe extends Activity {
     /** The dot generator */
     DotGenerator dotGenerator;
 
+    boolean pointerDown = false;
+
     /** Listen for taps. */
     private final class TrackingTouchListener
         implements View.OnTouchListener
     {
         private final Dots mDots;
-        private List<Integer> tracks = new ArrayList<Integer>();
 
         TrackingTouchListener(Dots dots) { mDots = dots; }
 
@@ -55,62 +73,37 @@ public class TouchMe extends Activity {
             int n;
             int idx;
             int action = evt.getAction();
-            switch (action & MotionEvent.ACTION_MASK) {
-                case MotionEvent.ACTION_DOWN:
-                case MotionEvent.ACTION_POINTER_DOWN:
-                    idx = (action & MotionEvent.ACTION_POINTER_INDEX_MASK)
-                        >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
-                    tracks.add(Integer.valueOf(evt.getPointerId(idx)));
-                    dotView.invalidate("TAP");
-                    break;
-
-                case MotionEvent.ACTION_POINTER_UP:
-                    idx = (action & MotionEvent.ACTION_POINTER_INDEX_MASK)
-                        >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
-//                    tracks.remove(Integer.valueOf(evt.getPointerId(idx)));
-                    break;
-
-                case MotionEvent.ACTION_MOVE:
-                    n = evt.getHistorySize();
-                    for (Integer i: tracks) {
-                        idx = evt.findPointerIndex(i.intValue());
-                        for (int j = 0; j < n; j++) {
-                            addDot(
-                                mDots,
-                                evt.getHistoricalX(idx, j),
-                                evt.getHistoricalY(idx, j),
-                                evt.getHistoricalPressure(idx, j),
-                                evt.getHistoricalSize(idx, j));
-                        }
-                    }
-                    break;
-
-
-                default:
-                    return false;
+            if (action == MotionEvent.ACTION_POINTER_DOWN || action == MotionEvent.ACTION_DOWN){
+                pointerDown = true;
             }
 
-            for (Integer i: tracks) {
-                idx = evt.findPointerIndex(i.intValue());
-                addDot(
-                    mDots,
-                    evt.getX(idx),
-                    evt.getY(idx),
-                    evt.getPressure(idx),
-                    evt.getSize(idx));
+            if (action == MotionEvent.ACTION_POINTER_UP || action == MotionEvent.ACTION_UP){
+                if (pointerDown){
+                    dotView.invalidate("TAP", (int)evt.getX(), (int)evt.getY());
+                }
+                pointerDown = false;
             }
 
             return true;
         }
+    }
 
-        private void addDot(Dots dots, float x, float y, float p, float s) {
-            dots.addDot(
-                x,
-                y,
-                Color.CYAN,
-                (int) ((p + 0.5) * (s + 0.5) * DOT_DIAMETER));
+    private Runnable updateTimerThread = new Runnable() {
+        public void run() {
+            timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+            updatedTime = timeSwapBuff + timeInMilliseconds;
+            int milliseconds = (int) (updatedTime % 1000);
+            onTime(milliseconds);
+            customHandler.postDelayed(this, 0);
+        }
+    };
+
+    private void onTime(int mili){
+        if(mili==900) {
+            dotView.invalidate("TAP", 0, 0);
         }
     }
+
 
     /** Generate new dots, one per second. */
     private final class DotGenerator implements Runnable {
@@ -148,7 +141,11 @@ public class TouchMe extends Activity {
 
     /** Called when the activity is first created. */
     @Override public void onCreate(Bundle state) {
+
         super.onCreate(state);
+
+        startTime = SystemClock.uptimeMillis();
+        customHandler.postDelayed(updateTimerThread, 0);
 
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -162,6 +159,7 @@ public class TouchMe extends Activity {
 
         dotView.setOnCreateContextMenuListener(this);
         dotView.setOnTouchListener(new TrackingTouchListener(dotModel));
+
 
         dotView.setOnKeyListener(new OnKeyListener() {
             @Override

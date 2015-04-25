@@ -19,6 +19,10 @@ public class SquareF implements DrawableObj {
         this.y = y;
     }
 
+    public boolean hit(int x, int y){
+        return false;
+    }
+
     public void setWidth (int width){
         this.width = width;
     }

@@ -5,6 +5,9 @@ package com.oreilly.demo.android.pa.uidemo.draw;
  */
 public class Sprite implements DrawableObj {
 
+    public boolean hit(int x, int y){
+        return false;
+    }
 
     public <Result> Result accept(final Visitor<Result> v) {
         return v.onSprite(this);

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import java.util.Vector;
 import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
 import com.oreilly.demo.android.pa.uidemo.draw.Square;
+import com.oreilly.demo.android.pa.uidemo.draw.SquareF;
 
 /**
  * Created by Salomon on 4/22/15.
@@ -21,7 +22,7 @@ public class Menu implements State{
     private Vector<DrawableObj> toDraw = new Vector<DrawableObj>();
 
     public Vector<DrawableObj> start(int width, int height)  { this.width = width; this.height = height; DrawMenu(); return toDraw; }
-    public Vector<DrawableObj> tap(double x, double y)  { if (inArea()) {
+    public Vector<DrawableObj> tap(int x, int y)  { if (inArea(x,y)) {
         sm.toSelect();
     } return null;}
     public Vector<DrawableObj>  tick()  { return null; }
@@ -42,12 +43,12 @@ public class Menu implements State{
             used2 = width;
         }
         toDraw.clear();
-        toDraw.add(new Square((int) (width - used), (int) (height - used), (int) (used2 * percBorder), (int) (used2 * percBorder), new int[]{255, 255, 255, 255}));
-        toDraw.add(new Square((int)(width-used + 20),(int)(height-used + 20),(int)(used2*percBorder - 10),(int)(used2*percBorder - 10), new int[]{255,255,255,255}));
-        toDraw.add(new Square((int)(width-used - 20),(int)(height-used - 20),(int)(used2*percBorder + 10),(int)(used2*percBorder + 10), new int[]{255,255,255,255}));
+        toDraw.add(new Square((int)(width-used + 20),(int)(height-used + 20),(int)(used2*percBorder - 10),(int)(used2*percBorder - 10), new int[]{255, 255, 251, 212}));
+        toDraw.add(new Square((int) (width - used), (int) (height - used), (int) (used2 * percBorder), (int) (used2 * percBorder), new int[]{255, 153, 251, 212}));
+        toDraw.add(new Square((int)(width-used - 20),(int)(height-used - 20),(int)(used2*percBorder + 10),(int)(used2*percBorder + 10), new int[]{255, 51, 251, 212}));
     }
 
-    private boolean inArea(){
+    private boolean inArea(int x, int y){
         return true;
     }
 

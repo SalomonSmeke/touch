@@ -11,7 +11,7 @@ import java.util.Vector;
  */
 interface State {
     Vector<DrawableObj> start(int width, int height);
-    Vector<DrawableObj>  tap(double x, double y);
+    Vector<DrawableObj>  tap(int x, int y);
     Vector<DrawableObj>  tick();
     Bundle save(Bundle bundle);
     Vector<DrawableObj> load(int width, int height, Bundle bundle);

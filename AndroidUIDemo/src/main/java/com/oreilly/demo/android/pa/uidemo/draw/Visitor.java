@@ -9,5 +9,6 @@ public interface Visitor<Result> {
 	Result onSprite(Sprite sp);
 	Result onSquare(Square sq);
     Result onSquareF(SquareF sq);
+    Result onCircleF(CircleF ci);
 	Result onText(Text t);
 }

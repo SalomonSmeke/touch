@@ -71,9 +71,9 @@ public class DotView extends View {
         System.gc();
     }
 
-    public void invalidate(String s){
+    public void invalidate(String s, int x, int y){
         if (s=="TAP"){
-            wrapper.tap();
+            wrapper.tap(x,y);
             this.invalidate();
         }
     }

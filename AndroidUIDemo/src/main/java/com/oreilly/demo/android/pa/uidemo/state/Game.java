@@ -19,7 +19,7 @@ public class Game implements State {
     private final StateView sm;
 
     public Vector<DrawableObj> start(int width, int height)  { return null; }
-    public Vector<DrawableObj> tap( double x, double y)  { return null; }
+    public Vector<DrawableObj> tap( int x, int y)  { return null; }
     public Vector<DrawableObj> tick()  { return null; }
     public Bundle save(Bundle bundle) { return bundle; }
     public Vector<DrawableObj> load(int width, int height, Bundle bundle) { return null; }

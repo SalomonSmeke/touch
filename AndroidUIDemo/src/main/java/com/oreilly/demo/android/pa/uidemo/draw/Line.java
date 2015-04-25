@@ -17,6 +17,10 @@ public class Line implements DrawableObj {
         this.y2 = y2;
     }
 
+    public boolean hit(int x, int y){
+       return false;
+    }
+
     public void setX1 (int x1){
         this.x1 = x1;
     }
