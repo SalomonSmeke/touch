@@ -12,4 +12,8 @@ public class grid {
     public Vector<DrawableObj> tap(int x, int y){
         return null;
     }
+
+    public Vector<DrawableObj> tick(){
+        return null;
+    }
 }

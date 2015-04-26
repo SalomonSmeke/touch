@@ -43,6 +43,9 @@ public class objectMaster {
     }
 
     public Vector<DrawableObj> tick(){
+        drawList.clear();
+        drawList.add(Background);
+        drawList.addAll(Grid.tick());
         return drawList;
     }
 }
