@@ -9,6 +9,10 @@ import java.util.Vector;
  */
 public class grid {
 
+    public void setWH(int width, int height){
+
+    }
+
     public Vector<DrawableObj> tap(int x, int y){
         return null;
     }
@@ -16,4 +20,6 @@ public class grid {
     public Vector<DrawableObj> tick(){
         return null;
     }
+
+
 }

@@ -12,6 +12,8 @@ import java.util.Vector;
  */
 public class objectMaster {
     private int difficulty = 0;
+    private int width = 0;
+    private int height = 0;
 
     private Vector<DrawableObj> drawList = new Vector<DrawableObj>();
 
@@ -20,10 +22,12 @@ public class objectMaster {
     private SquareF Background;
     private grid Grid;
     private progressBar Bar;
-    private  difficultyDisplay Difficulty;
+    private difficultyDisplay Difficulty;
 
     public objectMaster(int width, int height, int difficulty){
         this.difficulty=difficulty;
+        this.width = width;
+        this.height = height;
         clrs.add(new int[]{255, 255, 251, 212});
         clrs.add(new int[]{255, 153, 251, 212});
         clrs.add(new int[]{255, 51, 251, 212});
@@ -32,6 +36,9 @@ public class objectMaster {
 
     public Vector<DrawableObj> init() {
         drawList.add(Background);
+        Grid.setWH(width, height);
+        Bar.setWH(width, height);
+        Difficulty.setWH(width, height);
         return drawList;
     }
 
@@ -39,6 +46,8 @@ public class objectMaster {
         drawList.clear();
         drawList.add(Background);
         drawList.addAll(Grid.tap(x, y));
+        drawList.addAll(Bar.tap());
+        drawList.addAll(Difficulty.tap());
         return drawList;
     }
 
@@ -46,6 +55,8 @@ public class objectMaster {
         drawList.clear();
         drawList.add(Background);
         drawList.addAll(Grid.tick());
+        drawList.addAll(Bar.tick());
+        drawList.addAll(Difficulty.tick());
         return drawList;
     }
 }
