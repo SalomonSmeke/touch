@@ -73,20 +73,23 @@ public class Menu implements State{
         double widthBased = 2*(width*percBorder);
         double heightBased = 2*(height*percBorder);
         double used;
-        int used2;
+        double used2;
         if (widthBased > heightBased){
             used = heightBased;
-            used2 = height;
+            used2 = height*percBorder;
         } else {
             used = widthBased;
-            used2 = width;
+            used2 = width*percBorder;
         }
         int alpha = 255/6 * frameNo;
-        toDraw.clear();
-        toDraw.add(new Square((int)(width-used + 20),(int)(height-used + 20),(int)(used2*percBorder - 10),(int)(used2*percBorder - 10), new int[]{255-alpha, 255, 251, 212}));
-        toDraw.add(new Square((int) (width - used), (int) (height - used), (int) (used2 * percBorder), (int) (used2 * percBorder), new int[]{255-alpha, 153, 251, 212}));
-        toDraw.add(new Square((int)(width-used - 20),(int)(height-used - 20),(int)(used2*percBorder + 10),(int)(used2*percBorder + 10), new int[]{255-alpha, 51, 251, 212}));
+        int subAlpha = 255-alpha;
 
+        toDraw.clear();
+        double wm = width-used;
+        double hm = height-used;
+        toDraw.add(new Square((int)(wm + 20),(int)(hm + 20),(int)(used2- 10),(int)(used2 - 10), new int[]{subAlpha, 255, 251, 212}));
+        toDraw.add(new Square((int) (wm), (int) (hm), (int) (used2), (int) (used2), new int[]{subAlpha, 153, 251, 212}));
+        toDraw.add(new Square((int)(wm - 20),(int)(hm - 20),(int)(used2 + 10),(int)(used2 + 10), new int[]{subAlpha, 51, 251, 212}));
 
         Vector<int []> clrs = new Vector<int[]>();
 
@@ -94,11 +97,11 @@ public class Menu implements State{
         clrs.add(new int[]{alpha, 153, 251, 212});
         clrs.add(new int[]{alpha, 51, 251, 212});
         for (int i = 0; i < 3; i++){
-            toDraw.add(new SquareF((int)(width-used),(int)(height-used)/3,(int)(used2*percBorder),(int)(used2*percBorder)+((int)(height-used)/3*(i)),clrs.get(i)));
+            toDraw.add(new SquareF((int)(width-used),(int)(height-used)/3,(int)(used2),(int)(used2)+((int)(height-used)/3*(i)),clrs.get(i)));
         }
         for (int i = 0; i < 3; i++) {
             for (int z = -1; z < i; z++) {
-                toDraw.add(new CircleF((int) used / 4, width / 2 + ((int) used)*z, (int) ((used2 * percBorder) + ((height - used) / 3 * (i)) + (height - used) / 6), new int[]{alpha, 255, 100, 100}));
+                toDraw.add(new CircleF((int) used / 4, width / 2 + ((int) used)*z, (int) ((used2) + ((height - used) / 3 * (i)) + (height - used) / 6), new int[]{alpha, 255, 100, 100}));
             }
         }
     }
@@ -118,19 +121,21 @@ public class Menu implements State{
         double widthBased = 2*(width*percBorder);
         double heightBased = 2*(height*percBorder);
         double used;
-        int used2;
+        double used2;
         if (widthBased > heightBased){
             used = heightBased;
-            used2 = height;
+            used2 = height*percBorder;
         } else {
             used = widthBased;
-            used2 = width;
+            used2 = width*percBorder;
         }
+        double wm = width-used;
+        double hm = height-used;
         int alpha = (int)((160 - (animate*3)));
         toDraw.clear();
-        toDraw.add(new Square((int)(width-used + 20),(int)(height-used + 20),(int)(used2*percBorder - 10),(int)(used2*percBorder - 10), new int[]{255, 255, 251, 212}));
-        toDraw.add(new Square((int) (width - used), (int) (height - used), (int) (used2 * percBorder), (int) (used2 * percBorder), new int[]{255, 153, 251, 212}));
-        toDraw.add(new Square((int)(width-used - 20),(int)(height-used - 20),(int)(used2*percBorder + 10),(int)(used2*percBorder + 10), new int[]{255, 51, 251, 212}));
+        toDraw.add(new Square((int)(wm + 20),(int)(hm + 20),(int)(used2- 10),(int)(used2 - 10), new int[]{255, 255, 251, 212}));
+        toDraw.add(new Square((int) (wm), (int) (hm), (int) (used2), (int) (used2), new int[]{255, 153, 251, 212}));
+        toDraw.add(new Square((int)(wm - 20),(int)(hm - 20),(int)(used2 + 10),(int)(used2 + 10), new int[]{255, 51, 251, 212}));
 
 
         toDraw.add(new CircleF((int) (((used / 4) * (1.0 + animate/200))), width / 2, height/2, new int[]{alpha, 255, 251, 212}));
@@ -138,6 +143,22 @@ public class Menu implements State{
     }
 
     private boolean inArea(int x, int y){
+        double percBorder = .1;
+        double widthBased = 2*(width*percBorder);
+        double heightBased = 2*(height*percBorder);
+        double used;
+        if (widthBased > heightBased){
+            used = heightBased;
+        } else {
+            used = (((widthBased / 4) * (1.0 + animate/200)));
+        }
+        double xAreaL = width/2 - used;
+        double xAreaR = width/2 + used;
+        double yAreaT = height/2 - used;
+        double yAreaB = height/2 + used;
+        if (x<xAreaL || x>xAreaR || y<yAreaT || y>yAreaB){
+            return false;
+        }
         return true;
     }
 
