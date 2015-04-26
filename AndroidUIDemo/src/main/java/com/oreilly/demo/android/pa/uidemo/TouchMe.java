@@ -39,6 +39,7 @@ import com.oreilly.demo.android.pa.uidemo.view.DotView;
  */
 public class TouchMe extends Activity {
 
+
     private long startTime = 0L;
     private Handler customHandler = new Handler();
     long timeInMilliseconds = 0L;
@@ -99,8 +100,8 @@ public class TouchMe extends Activity {
     };
 
     private void onTime(int mili){
-        if(mili==900) {
-            dotView.invalidate("TAP", 0, 0);
+        if(mili%20 == 0) {
+            dotView.invalidate("FRAME", 0, 0);
         }
     }
 
@@ -144,8 +145,7 @@ public class TouchMe extends Activity {
 
         super.onCreate(state);
 
-        startTime = SystemClock.uptimeMillis();
-        customHandler.postDelayed(updateTimerThread, 0);
+
 
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -159,6 +159,18 @@ public class TouchMe extends Activity {
 
         dotView.setOnCreateContextMenuListener(this);
         dotView.setOnTouchListener(new TrackingTouchListener(dotModel));
+
+        synchronized (updateTimerThread){
+            try {
+                updateTimerThread.wait(2);
+
+            } catch (InterruptedException e){
+
+            }
+            startTime = SystemClock.uptimeMillis();
+            customHandler.postDelayed(updateTimerThread, 0);
+        }
+
 
 
         dotView.setOnKeyListener(new OnKeyListener() {

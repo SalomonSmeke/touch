@@ -31,7 +31,7 @@ public class StateWrapper implements StateOverlord {
     //State actions
     public void start(int width, int height)  { DrawMe = currentState.start(width, height);}
     public void tap(int x, int y) { currentState.tap(x,y);}
-    public void tick() { currentState.tick();}
+    public void tick() { DrawMe = currentState.tick();}
     public Bundle save(Bundle bundle) { return currentState.save(bundle);}
     public void load(Bundle bundle) { currentState.load(width, height, bundle);}
     public void draw(){

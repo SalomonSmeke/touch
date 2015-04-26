@@ -75,6 +75,9 @@ public class DotView extends View {
         if (s=="TAP"){
             wrapper.tap(x,y);
             this.invalidate();
+        } else {
+            wrapper.tick();
+            this.invalidate();
         }
     }
 }

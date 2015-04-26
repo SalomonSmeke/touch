@@ -2,6 +2,7 @@ package com.oreilly.demo.android.pa.uidemo.state;
 
 import android.os.Bundle;
 
+import com.oreilly.demo.android.pa.uidemo.draw.CircleF;
 import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
 import com.oreilly.demo.android.pa.uidemo.draw.SquareF;
 import com.oreilly.demo.android.pa.uidemo.draw.Square;
@@ -22,7 +23,7 @@ public class Select implements State {
 
     public Vector<DrawableObj> start(int width, int height)  { this.width = width; this.height = height; DrawSelect(); return toDraw;  }
     public Vector<DrawableObj>  tap(int x, int y)  { return null; }
-    public Vector<DrawableObj>  tick()  { return  null; }
+    public Vector<DrawableObj>  tick()  { return  toDraw; }
     public Bundle save(Bundle bundle) { return bundle; }
     public Vector<DrawableObj> load(int width, int height, Bundle bundle) { this.width = width; this.height = height; DrawSelect(); return toDraw;  }
 
@@ -54,6 +55,26 @@ public class Select implements State {
         for (int i = 0; i < 3; i++){
             toDraw.add(new SquareF((int)(width-used),(int)(height-used)/3,(int)(used2*percBorder),(int)(used2*percBorder)+((int)(height-used)/3*(i)),clrs.get(i)));
         }
-        //toDraw.add(new Square((int)(width-used)+10,(int)(height-used)/3,(int)(used2*percBorder)-5,(int)(used2*percBorder)+((int)(height-used)/3),new int[]{255,255,255,255,255}));
+        DrawDots();
+    }
+
+    public void DrawDots(){
+        double percBorder = .1;
+        double widthBased = 2*(width*percBorder);
+        double heightBased = 2*(height*percBorder);
+        double used;
+        int used2;
+        if (widthBased > heightBased){
+            used = heightBased;
+            used2 = height;
+        } else {
+            used = widthBased;
+            used2 = width;
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int z = -1; z < i; z++) {
+                toDraw.add(new CircleF((int) used / 4, width / 2 + ((int) used)*z, (int) ((used2 * percBorder) + ((height - used) / 3 * (i)) + (height - used) / 6), new int[]{255, 255, 100, 100}));
+            }
+        }
     }
 }
