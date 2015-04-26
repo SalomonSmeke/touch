@@ -116,7 +116,6 @@ public class Menu implements State{
             animate ++;
         }
 
-
         double percBorder = .1;
         double widthBased = 2*(width*percBorder);
         double heightBased = 2*(height*percBorder);
