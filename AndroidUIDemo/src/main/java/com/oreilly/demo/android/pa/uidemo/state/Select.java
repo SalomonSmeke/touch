@@ -180,7 +180,9 @@ public class Select implements State {
                 toDraw.add(new SquareF((int) (width - used), (int) (height - used) / 3, (int) (used2 * percBorder), (int) (used2 * percBorder) + ((int) (height - used) / 3 * (i)), clrs.get(i)));
             } else {
                 if (i!=choice){
-                    toDraw.add(new SquareF((int) (width - used), (int) (height - used) / 3, (int) (used2 * percBorder), (int) (used2 * percBorder) + ((int) (height - used) / 3 * (i)), clrs.get(i)));
+                    int[] temp = clrs.get(i);
+                    temp[0] = 255-(255/30)*(frame-blockTransitionBegin);
+                    toDraw.add(new SquareF((int) (width - used), (int) (height - used) / 3, (int) (used2 * percBorder), (int) (used2 * percBorder) + ((int) (height - used) / 3 * (i)), temp));
                 }
             }
         }
