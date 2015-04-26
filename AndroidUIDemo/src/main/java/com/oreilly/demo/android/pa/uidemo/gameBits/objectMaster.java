@@ -35,9 +35,12 @@ public class objectMaster {
     }
 
     public Vector<DrawableObj> init() {
-        drawList.add(Background);
         Grid = new grid (width, height);
-        Bar = new progressBar (width, height);
+        Bar = new progressBar (width, height,new int[]{255, 255, 100, 100});
+
+        drawList.add(Background);
+        drawList.addAll(Bar.tap());
+        Log.i("Made it to init", "");
         Difficulty = new difficultyDisplay(width, height);
         return drawList;
     }

@@ -1,6 +1,7 @@
 package com.oreilly.demo.android.pa.uidemo.state;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
 import com.oreilly.demo.android.pa.uidemo.gameBits.objectMaster;

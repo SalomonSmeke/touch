@@ -9,12 +9,14 @@ public class Line implements DrawableObj {
     private int x2 = 0;
     private int y1 = 0;
     private int y2 = 0;
+    private int[] c;
 
-    public Line (int x1, int x2, int y1, int y2){
+    public Line (int x1, int x2, int y1, int y2, int []c){
         this.x1 = x1;
         this.x2 = x2;
         this.y1 = y1;
         this.y2 = y2;
+        this.c = c;
     }
 
     public boolean hit(int x, int y){
@@ -46,6 +48,7 @@ public class Line implements DrawableObj {
     public int getY2 (){
         return y2;
     }
+    public int[] getC() { return c; }
 
 
     public <Result> Result accept(final Visitor<Result> v) {

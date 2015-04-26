@@ -1,7 +1,7 @@
 package com.oreilly.demo.android.pa.uidemo.gameBits;
 
 import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
-import com.oreilly.demo.android.pa.uidemo.draw.SquareF;
+import com.oreilly.demo.android.pa.uidemo.draw.Line;
 
 import java.util.Vector;
 
@@ -15,19 +15,19 @@ public class progressBar {
     private int height;
 
     //Box
-    private SquareF line;
+    private Line line;
 
     //Locations
     public int gridLocation = 0;
 
     //Values
     public float percBorder = (float).1;
-    public int lineX;
-    public int minY;
-    public int maxY;
+    public int linePos;
+    public int minLengthLine;
+    public int maxLengthLine;
     public int lineSize;
 
-    public progressBar(int width, int height){
+    public progressBar(int width, int height, int []c){
         this.width = width;
         this.height = height;
 
@@ -36,19 +36,18 @@ public class progressBar {
         if (width > height){
             gridSize = (int)(height - height * percBorder);
             gridLocation = (int)(width/2.0 - gridSize/2.0);
-            minY = (int)(height * percBorder / 2);
-            maxY = (int)(height - height * percBorder / 2);
-
+            minLengthLine = (int)(height * percBorder / 2);
+            maxLengthLine = (int)(height - height * percBorder / 2);
+            linePos = gridLocation/2;
+            line = new Line(linePos,linePos,minLengthLine,maxLengthLine,c);
         } else {
             gridSize = (int)(width - width * percBorder);
             gridLocation = (int)(height/2.0 - gridSize/2.0);
-            minY = (int)(width * percBorder / 2);
-            maxY = (int)(width - width * percBorder / 2);
+            minLengthLine = (int)(width * percBorder / 2);
+            maxLengthLine = (int)(width - width * percBorder / 2);
+            linePos = gridLocation/2;
+            line = new Line(minLengthLine,maxLengthLine,linePos,linePos,c);
         }
-
-        lineX = gridLocation/2;
-
-
 
 
     }
