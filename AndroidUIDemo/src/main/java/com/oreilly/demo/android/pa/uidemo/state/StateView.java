@@ -17,7 +17,7 @@ interface StateView{
     // Transitions
     void toSelect();
     void toMenu();
-    void toGame();
+    void toGame(int difficulty);
     void toEnd();
 
     // Actions

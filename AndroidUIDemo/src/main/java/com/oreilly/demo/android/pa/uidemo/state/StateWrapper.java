@@ -60,7 +60,10 @@ public class StateWrapper implements StateOverlord {
 
     public void toSelect(){ setState(SELECT);}
 
-    public void toGame(){ setState(GAME);}
+    public void toGame(int difficulty){
+        GAME.setVar(difficulty);
+        setState(GAME);
+    }
 
     public void toEnd(){ setState(END);}
 

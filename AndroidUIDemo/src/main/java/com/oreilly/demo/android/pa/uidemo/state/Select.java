@@ -49,6 +49,9 @@ public class Select implements State {
         return null;
     }
     public Vector<DrawableObj>  tick()  {
+        if (frame == 45){
+            sm.toGame(choice);
+        }
         if (choice > -1){
             ExpandTransition();
         }
@@ -218,5 +221,7 @@ public class Select implements State {
 
         return new int[]{(int)(wideChange+wide),(int)(tallChange+tall),(int)transitionalX,(int)transitionalY};
     }
+
+    public void setVar(int x){}
 }
 

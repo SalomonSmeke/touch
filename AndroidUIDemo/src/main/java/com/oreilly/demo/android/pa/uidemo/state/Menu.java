@@ -159,6 +159,10 @@ public class Menu implements State{
             return false;
         }
         return true;
+
+
     }
+
+    public void setVar(int x){}
 
 }

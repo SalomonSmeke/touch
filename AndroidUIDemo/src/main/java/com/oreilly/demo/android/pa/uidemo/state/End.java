@@ -22,4 +22,6 @@ public class End implements State {
     public Vector<DrawableObj> tick()  { return null; }
     public Bundle save(Bundle bundle) { return bundle; }
     public Vector<DrawableObj> load(int width, int height, Bundle bundle) { return null; }
+
+    public void setVar(int x){}
 }

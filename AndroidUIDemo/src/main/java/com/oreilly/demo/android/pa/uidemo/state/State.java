@@ -15,4 +15,5 @@ interface State {
     Vector<DrawableObj>  tick();
     Bundle save(Bundle bundle);
     Vector<DrawableObj> load(int width, int height, Bundle bundle);
+    void setVar(int var);
 }
