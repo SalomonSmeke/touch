@@ -36,9 +36,9 @@ public class objectMaster {
 
     public Vector<DrawableObj> init() {
         drawList.add(Background);
-        Grid.setWH(width, height);
-        Bar.setWH(width, height);
-        Difficulty.setWH(width, height);
+        Grid = new grid (width, height);
+        Bar = new progressBar (width, height);
+        Difficulty = new difficultyDisplay(width, height);
         return drawList;
     }
 

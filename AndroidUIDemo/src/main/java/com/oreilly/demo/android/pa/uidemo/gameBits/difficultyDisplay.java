@@ -9,7 +9,7 @@ import java.util.Vector;
  */
 public class difficultyDisplay {
 
-    public void setWH(int width, int height){
+    public difficultyDisplay(int width, int height){
 
     }
 

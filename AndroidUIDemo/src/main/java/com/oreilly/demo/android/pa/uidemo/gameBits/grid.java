@@ -9,7 +9,7 @@ import java.util.Vector;
  */
 public class grid {
 
-    public void setWH(int width, int height){
+    public grid(int width, int height){
 
     }
 
