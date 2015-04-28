@@ -38,14 +38,14 @@ public class progressBar {
             gridLocation = (int)(width/2.0 - gridSize/2.0);
             minLengthLine = (int)(height * percBorder / 2);
             maxLengthLine = (int)(height - height * percBorder / 2);
-            linePos = gridLocation/2;
+            linePos = gridLocation/3;
             line = new Line(linePos,linePos,minLengthLine,maxLengthLine,c);
         } else {
             gridSize = (int)(width - width * percBorder);
             gridLocation = (int)(height/2.0 - gridSize/2.0);
             minLengthLine = (int)(width * percBorder / 2);
             maxLengthLine = (int)(width - width * percBorder / 2);
-            linePos = gridLocation/2;
+            linePos = gridLocation/3;
             line = new Line(minLengthLine,maxLengthLine,linePos,linePos,c);
         }
 
