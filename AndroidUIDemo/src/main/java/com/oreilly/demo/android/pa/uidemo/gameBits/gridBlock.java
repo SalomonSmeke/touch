@@ -28,13 +28,13 @@ public class gridBlock {
         if (width > height){
             gridSize = (int)(height - height * percBorder);
             gridLocationX = (int)(width/2.0 - gridSize/2.0);
-            gridLocationY = (int)(percBorder);
+            gridLocationY = (int)(height * percBorder);
 
             calcBoxLocation(height, cordinateX, cordinateY);
         } else {
             gridSize = (int)(width - width * percBorder);
             gridLocationX = (int)(height/2.0 - gridSize/2.0);
-            gridLocationY = (int)(percBorder);
+            gridLocationY = (int)(width * percBorder);
 
             calcBoxLocation(width, cordinateX, cordinateY);
         }
@@ -42,13 +42,10 @@ public class gridBlock {
 
     private void calcBoxLocation(int dimension, int cordinateX, int cordinateY){
         int boxDimension = (int)((dimension - (dimension * percBorder) * 2)/5);
-        if(cordinateX == 0){
-            x = 0;
-            y = boxDimension*cordinateY;
-        }
-        else{
-            x = boxDimension*cordinateX;
-            y = 0;
-        }
+        x = gridLocationX + boxDimension * cordinateX;
+        y = gridLocationY + boxDimension * cordinateY;
     }
+
+    //getDrawable
+    //return square
 }
