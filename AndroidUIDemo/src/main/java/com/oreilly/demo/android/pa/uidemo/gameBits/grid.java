@@ -21,17 +21,17 @@ public class grid {
     public grid(int width, int height, int difficulty){
         for (int x = 0; x < 5; x++){
             for (int y = 0; y < 5; y++){
+                blocks[x][y].setColor(new int[]{255,255,255,255});
                 blocks[x][y].setPlaces(width, height, x, y);
-                blocks[x][y].setColor();
-                backgroundGrid.add(blocks[x][y].getDrawable);
+                backgroundGrid.add(blocks[x][y].getDrawable());
             }
         }
         enemies = new enemy[10+(difficulty*2)];
-        for (int i = 0; i < enemies.length; i++){
-            enemy.setColor();
-            enemy.setDraw(getCoordinates());
-            dynamic.add(enemy.getDrawable);
-        }
+//        for (int i = 0; i < enemies.length; i++){
+//            enemy.setColor();
+//            enemy.setDraw(getCoordinates());
+//            dynamic.add(enemy.getDrawable);
+//        }
         drawMe.addAll(backgroundGrid);
         drawMe.addAll(dynamic);
     }
@@ -57,13 +57,13 @@ public class grid {
     }
 
     public Vector<DrawableObj> tap(int x, int y){
-        if (enemyAt(x,y)){
-            if (enemy.colorMatches()){
-                removeEnemy(x,y);
-            } else {
-                return null; //lose
-            }
-        }
+//        if (enemyAt(x,y)){
+//            if (enemy.colorMatches()){
+//                removeEnemy(x,y);
+//            } else {
+//                return null; //lose
+//            }
+//        }
         return drawMe;
     }
 
