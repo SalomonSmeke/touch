@@ -25,7 +25,7 @@ public class objectMaster {
     private difficultyDisplay Difficulty;
 
     public objectMaster(int width, int height, int difficulty){
-        this.difficulty=difficulty;
+        this.difficulty = difficulty;
         this.width = width;
         this.height = height;
         clrs.add(new int[]{255, 255, 251, 212});
@@ -35,10 +35,11 @@ public class objectMaster {
     }
 
     public Vector<DrawableObj> init() {
-        Grid = new grid (width, height);
+        Grid = new grid (width, height, difficulty);
         Bar = new progressBar (width, height,new int[]{255, 255, 100, 100});
 
         drawList.add(Background);
+
         drawList.addAll(Bar.tap());
         Log.i("Made it to init", "");
         Difficulty = new difficultyDisplay(width, height);
