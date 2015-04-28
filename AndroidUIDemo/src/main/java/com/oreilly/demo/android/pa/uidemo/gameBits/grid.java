@@ -21,6 +21,7 @@ public class grid {
     public grid(int width, int height, int difficulty){
         for (int x = 0; x < 5; x++){
             for (int y = 0; y < 5; y++){
+                blocks[x][y] = new gridBlock();
                 blocks[x][y].setColor(new int[]{255,255,255,255});
                 blocks[x][y].setPlaces(width, height, x, y);
                 backgroundGrid.add(blocks[x][y].getDrawable());

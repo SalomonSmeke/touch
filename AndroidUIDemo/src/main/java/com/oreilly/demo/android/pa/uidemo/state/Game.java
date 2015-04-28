@@ -39,8 +39,12 @@ public class Game implements State {
         list = gameView.init();
         return list;
     }
-    public Vector<DrawableObj> tap( int x, int y)  { return list; }
-    public Vector<DrawableObj> tick()  { return list; }
+    public Vector<DrawableObj> tap( int x, int y)  {
+        list = gameView.tap(x,y);
+        return list; }
+    public Vector<DrawableObj> tick()  {
+        list = gameView.tick();
+        return list; }
     public Bundle save(Bundle bundle) { return bundle; }
     public Vector<DrawableObj> load(int width, int height, Bundle bundle) { return null; }
 

@@ -51,7 +51,7 @@ public class objectMaster {
         drawList.add(Background);
         drawList.addAll(Grid.tap(x, y));
         drawList.addAll(Bar.tap());
-        drawList.addAll(Difficulty.tap());
+        //drawList.addAll(Difficulty.tap());
         return drawList;
     }
 
@@ -60,7 +60,7 @@ public class objectMaster {
         drawList.add(Background);
         drawList.addAll(Grid.tick());
         drawList.addAll(Bar.tick());
-        drawList.addAll(Difficulty.tick());
+        //drawList.addAll(Difficulty.tick());
         return drawList;
     }
 }
