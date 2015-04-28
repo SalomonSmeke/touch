@@ -1,6 +1,6 @@
 package com.oreilly.demo.android.pa.uidemo.gameBits;
 
-import com.oreilly.demo.android.pa.uidemo.draw.Line;
+import com.oreilly.demo.android.pa.uidemo.draw.Square;
 
 /**
  * Created by Thomas on 4/26/15.
@@ -11,13 +11,17 @@ public class gridBlock {
     private int height;
 
     //Locations
-    public int gridLocationX = 0;
-    public int gridLocationY = 0;
-    public int x = 0;
-    public int y = 0;
+    private int gridLocationX = 0;
+    private int gridLocationY = 0;
+    private int x = 0;
+    private int y = 0;
+
+    private Square square;
 
     //Values
-    public float percBorder = (float).1;
+    private float percBorder = (float).1;
+    private int boxDimension;
+    private int[] c;
 
     public void setPlaces(int width, int height, int cordinateX, int cordinateY){
         this.width = width;
@@ -38,14 +42,22 @@ public class gridBlock {
 
             calcBoxLocation(width, cordinateX, cordinateY);
         }
+
+        square = new Square(boxDimension, boxDimension, x, y, c);
     }
 
     private void calcBoxLocation(int dimension, int cordinateX, int cordinateY){
-        int boxDimension = (int)((dimension - (dimension * percBorder) * 2)/5);
+        boxDimension = (int)((dimension - (dimension * percBorder) * 2)/5);
         x = gridLocationX + boxDimension * cordinateX;
         y = gridLocationY + boxDimension * cordinateY;
     }
 
-    //getDrawable
-    //return square
+    public Square getDrawable(){
+
+        return square;
+    }
+
+    public void setColor(int[]colors){
+        c = colors;
+    }
 }
