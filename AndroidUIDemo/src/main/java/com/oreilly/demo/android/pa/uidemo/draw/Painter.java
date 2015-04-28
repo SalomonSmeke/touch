@@ -22,7 +22,9 @@ public class Painter implements Visitor<Void>{
     public Void onLine(Line l){
         int [] c = l.getC();
         paint.setARGB(c[0],c[1],c[2],c[3]);
+        paint.setStrokeWidth(25);
         canvas.drawLine(l.getX1(),l.getY1(),l.getX2(),l.getY2(),paint);
+        paint.setStrokeWidth(5);
         return null;
     }
 
