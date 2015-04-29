@@ -11,7 +11,7 @@ import java.util.Vector;
 public class grid {
 
     private gridBlock[][] blocks = new gridBlock[5][5];
-    private enemy[] enemies;
+    private Vector<enemy> enemies;
     private Vector<int []> occupied = new Vector<int[]>();
 
     private Vector<DrawableObj> backgroundGrid = new Vector<DrawableObj>();
@@ -70,31 +70,42 @@ public class grid {
     }
 
     private void generateEnemies(int size){
-        enemies = new enemy[size];
-        for (int i = 0; i < enemies.length; i++){
-            enemies[i] = new enemy(new int[]{255,255,100,100}); //Replace with color changer.
-            enemies[i].setDraw(getCoordinates(), boxSize, baseCoordinates);
-            dynamic.add(enemies[i].getDrawable());
+        enemies = new Vector<enemy>();
+        for (int i = 0; i < size; i++){
+            enemies.add(i,new enemy(new int[]{255,255,100,100}));//Replace with color changer.
+            enemies.get(i).setDraw(getCoordinates(), boxSize, baseCoordinates);
+            dynamic.add(enemies.get(i).getDrawable());
         }
     }
 
     private boolean enemyAt(int x, int y){
+        for (int i = 0; i < enemies.size(); i++){
+            if(enemies.get(i).collide(x,y)){
+                enemies.remove(i);
+                return true;
+            }
+        }
         return false;
     }
 
-    private void removeEnemy(int x, int y){
-
+    public Vector<DrawableObj> tap(int x, int y){
+        if(enemyAt(x,y)) {
+            reAdd();
+        }
+        if (enemies.size() == 0){
+            return null;
+        }
+        return drawMe;
     }
 
-    public Vector<DrawableObj> tap(int x, int y){
-//        if (enemyAt(x,y)){
-//            if (enemy.colorMatches()){
-//                removeEnemy(x,y);
-//            } else {
-//                return null; //lose
-//            }
-//        }
-        return drawMe;
+    private void reAdd(){
+        dynamic.clear();
+        drawMe.clear();
+        drawMe.addAll(backgroundGrid);
+        for (int i = 0; i < enemies.size(); i++){
+            dynamic.add(enemies.get(i).getDrawable());
+        }
+        drawMe.addAll(dynamic);
     }
 
     public Vector<DrawableObj> tick(){

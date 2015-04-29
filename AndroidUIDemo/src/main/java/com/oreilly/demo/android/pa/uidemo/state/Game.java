@@ -41,6 +41,9 @@ public class Game implements State {
     }
     public Vector<DrawableObj> tap( int x, int y)  {
         list = gameView.tap(x,y);
+        if (list == null){
+            sm.toSelect();
+        }
         return list; }
     public Vector<DrawableObj> tick()  {
         list = gameView.tick();

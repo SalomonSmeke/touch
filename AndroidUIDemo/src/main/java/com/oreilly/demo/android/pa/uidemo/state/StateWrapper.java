@@ -44,10 +44,10 @@ public class StateWrapper implements StateOverlord {
         this.painter = painter;
     }
 
-    private final State MENU = new Menu(this);
-    private final State SELECT = new Select(this);
-    private final State GAME = new Game(this);
-    private final State END = new End(this);
+    private State MENU = new Menu(this);
+    private State SELECT = new Select(this);
+    private State GAME = new Game(this);
+    private State END = new End(this);
 
     protected void setState(final State state) {
         this.currentState = state;
@@ -56,16 +56,26 @@ public class StateWrapper implements StateOverlord {
 
 
     //State transitions
-    public void toMenu(){ setState(MENU);}
+    public void toMenu(){
+        MENU = new Menu(this);
+        setState(MENU);
+    }
 
-    public void toSelect(){ setState(SELECT);}
+    public void toSelect(){
+        SELECT = new Select(this);
+        setState(SELECT);
+    }
 
     public void toGame(int difficulty){
+        GAME = new Game(this);
         GAME.setVar(difficulty);
         setState(GAME);
     }
 
-    public void toEnd(){ setState(END);}
+    public void toEnd(){
+        END = new End(this);
+        setState(END);
+    }
 
     //State saving
     //TODO Loading & Saving States

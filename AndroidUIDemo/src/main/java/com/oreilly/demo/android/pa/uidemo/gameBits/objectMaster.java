@@ -49,6 +49,10 @@ public class objectMaster {
     public Vector<DrawableObj> tap(int x, int y){
         drawList.clear();
         drawList.add(Background);
+        Vector<DrawableObj> temp = Grid.tap(x,y);
+        if (temp == null){
+            return null;
+        }
         drawList.addAll(Grid.tap(x, y));
         drawList.addAll(Bar.tap());
         //drawList.addAll(Difficulty.tap());
