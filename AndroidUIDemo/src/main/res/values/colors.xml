@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="red">#ffff0000</color>
-    <color name="green">#ff00ff00</color>
-    <color name="lt_grey">#dddddd</color>
-    <color name="grey">#999999</color>
-    <color name="dk_grey">#666666</color>
-    <color name="white">#ffffffff</color>
+    <color name="base">#F3CEB4</color>
+    <color name="one">#B87D8F</color>
+    <color name="two">#FAAC98</color>
+    <color name="three">#D0F7F4</color>
+    <color name="grid">#F38E96</color>
 </resources>

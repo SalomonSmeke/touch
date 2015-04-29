@@ -46,16 +46,16 @@ public class difficultyDisplay {
             circlePosX = gridLocation + gridSize + gridLocation/2;
 
             if (circles.length == 1){
-                circles[0] = new CircleF(circleSize,circlePosX,circlePosY,new int[]{255,255,100,100});
+                circles[0] = new CircleF(circleSize,circlePosX,circlePosY,new int[]{255,250,172,152});
             }
             if (circles.length == 2){
-                circles[0] = new CircleF(circleSize,circlePosX,circlePosY-gridSize/5,new int[]{255,255,100,100});
-                circles[1] = new CircleF(circleSize,circlePosX,circlePosY+gridSize/5,new int[]{255,255,100,100});
+                circles[0] = new CircleF(circleSize,circlePosX,circlePosY-gridSize/5,new int[]{255,184,125,143});
+                circles[1] = new CircleF(circleSize,circlePosX,circlePosY+gridSize/5,new int[]{255,208,247,244});
             }
             if (circles.length == 3){
-                circles[0] = new CircleF(circleSize,circlePosX,circlePosY-gridSize/5,new int[]{255,255,100,100});
-                circles[1] = new CircleF(circleSize,circlePosX,circlePosY+gridSize/5,new int[]{255,255,100,100});
-                circles[2] = new CircleF(circleSize,circlePosX,circlePosY,new int[]{255,255,100,100});
+                circles[0] = new CircleF(circleSize,circlePosX,circlePosY-gridSize/5,new int[]{255,184,125,143});
+                circles[1] = new CircleF(circleSize,circlePosX,circlePosY+gridSize/5,new int[]{255,208,247,244});
+                circles[2] = new CircleF(circleSize,circlePosX,circlePosY,new int[]{255,250,172,152});
             }
         } else {
             gridSize = (int)(width - width * percBorder);
@@ -66,16 +66,16 @@ public class difficultyDisplay {
             circlePosX = gridLocation + gridSize + gridLocation/2;
 
             if (circles.length == 1){
-                circles[0] = new CircleF(circleSize,circlePosY,circlePosX,new int[]{255,255,100,100});
+                circles[0] = new CircleF(circleSize,circlePosY,circlePosX,new int[]{255,250,172,152});
             }
             if (circles.length == 2){
-                circles[0] = new CircleF(circleSize,circlePosY-gridSize/10,circlePosX,new int[]{255,255,100,100});
-                circles[1] = new CircleF(circleSize,circlePosY+gridSize/10,circlePosX,new int[]{255,255,100,100});
+                circles[0] = new CircleF(circleSize,circlePosY-gridSize/10,circlePosX,new int[]{255,184,125,143});
+                circles[1] = new CircleF(circleSize,circlePosY+gridSize/10,circlePosX,new int[]{255,208,247,244});
             }
             if (circles.length == 3){
-                circles[0] = new CircleF(circleSize,circlePosY-gridSize/5,circlePosX,new int[]{255,255,100,100});
-                circles[1] = new CircleF(circleSize,circlePosY+gridSize/5,circlePosX,new int[]{255,255,100,100});
-                circles[2] = new CircleF(circleSize,circlePosY,circlePosX,new int[]{255,255,100,100});
+                circles[0] = new CircleF(circleSize,circlePosY-gridSize/5,circlePosX,new int[]{255,184,125,143});
+                circles[1] = new CircleF(circleSize,circlePosY+gridSize/5,circlePosX,new int[]{255,208,247,244});
+                circles[2] = new CircleF(circleSize,circlePosY,circlePosX,new int[]{255,250,172,152});
             }
         }
         for (int i = 0; i<circles.length; i++){

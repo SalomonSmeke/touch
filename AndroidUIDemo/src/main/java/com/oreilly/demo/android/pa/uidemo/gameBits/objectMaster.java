@@ -28,15 +28,15 @@ public class objectMaster {
         this.difficulty = difficulty;
         this.width = width;
         this.height = height;
-        clrs.add(new int[]{255, 255, 251, 212});
-        clrs.add(new int[]{255, 153, 251, 212});
-        clrs.add(new int[]{255, 51, 251, 212});
+        clrs.add(new int[]{255, 184, 125, 143});
+        clrs.add(new int[]{255, 250, 172, 152});
+        clrs.add(new int[]{255, 208, 247, 244});
         Background = new SquareF(width,height,0,0,clrs.get(difficulty));
     }
 
     public Vector<DrawableObj> init() {
         Grid = new grid (width, height, difficulty);
-        Bar = new progressBar (width, height,new int[]{255, 255, 100, 100});
+        Bar = new progressBar (width, height,new int[]{255, 243, 142, 150});
 
         drawList.add(Background);
 

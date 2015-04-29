@@ -3,7 +3,7 @@
     android:id="@+id/root"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@color/lt_grey"
+    android:background="@color/base"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:baselineAligned="false">
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="#FF6464"
+        android:background="#F3CEB4"
       android:clickable="true" />
 
 </LinearLayout>

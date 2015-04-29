@@ -25,7 +25,7 @@ public class grid {
     public grid(int width, int height, int difficulty){
         for (int x = 0; x < 5; x++){
             for (int y = 0; y < 5; y++){
-                blocks[x][y] = new gridBlock(width, height, x, y, new int[]{255,255,100,100});
+                blocks[x][y] = new gridBlock(width, height, x, y, new int[]{255,243,142,150});
                 backgroundGrid.add(blocks[x][y].getDrawable());
             }
 
@@ -72,7 +72,7 @@ public class grid {
     private void generateEnemies(int size){
         enemies = new Vector<enemy>();
         for (int i = 0; i < size; i++){
-            enemies.add(i,new enemy(new int[]{255,255,100,100}));//Replace with color changer.
+            enemies.add(i,new enemy(new int[]{255,243,142,150}));//Replace with color changer.
             enemies.get(i).setDraw(getCoordinates(), boxSize, baseCoordinates);
             dynamic.add(enemies.get(i).getDrawable());
         }

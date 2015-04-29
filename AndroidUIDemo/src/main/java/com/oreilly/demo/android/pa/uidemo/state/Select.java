@@ -80,12 +80,12 @@ public class Select implements State {
         }
 
         Vector<int []> clrs = new Vector<int[]>();
-        clrs.add(new int[]{255, 255, 251, 212});
-        clrs.add(new int[]{255, 153, 251, 212});
-        clrs.add(new int[]{255, 51, 251, 212});
+        clrs.add(new int[]{255, 184, 125, 143});
+        clrs.add(new int[]{255, 250, 172, 152});
+        clrs.add(new int[]{255, 208, 247, 244});
 
         toDraw.clear();
-        toDraw.add(new SquareF(width,height,0,0,new int[]{255,255,100,100}));
+        toDraw.add(new SquareF(width,height,0,0,new int[]{255,243,206,180}));
         for (int i = 0; i < 3; i++){
             toDraw.add(new SquareF((int)(width-used),(int)(height-used)/3,(int)(used2*percBorder),(int)(used2*percBorder)+((int)(height-used)/3*(i)),clrs.get(i)));
         }
@@ -108,7 +108,7 @@ public class Select implements State {
         }
         for (int i = 0; i < 3; i++) {
             for (int z = -1; z < i; z++) {
-                toDraw.add(new CircleF((int) used / 4, width / 2 + ((int) used)*z, (int) ((used2 * percBorder) + ((height - used) / 3 * (i)) + (height - used) / 6), new int[]{alpha, 255, 100, 100}));
+                toDraw.add(new CircleF((int) used / 4, width / 2 + ((int) used)*z, (int) ((used2 * percBorder) + ((height - used) / 3 * (i)) + (height - used) / 6), new int[]{alpha, 243, 142, 150}));
             }
         }
     }
@@ -168,12 +168,12 @@ public class Select implements State {
         }
 
         Vector<int []> clrs = new Vector<int[]>();
-        clrs.add(new int[]{255, 255, 251, 212});
-        clrs.add(new int[]{255, 153, 251, 212});
-        clrs.add(new int[]{255, 51, 251, 212});
+        clrs.add(new int[]{255, 184, 125, 143});
+        clrs.add(new int[]{255, 250, 172, 152});
+        clrs.add(new int[]{255, 208, 247, 244});
 
         toDraw.clear();
-        toDraw.add(new SquareF(width,height,0,0,new int[]{255,255,100,100}));
+        toDraw.add(new SquareF(width,height,0,0,new int[]{255,243,206,180}));
 
         for (int i = 0; i < 3; i++){
             if (frame < blockTransitionBegin) {
