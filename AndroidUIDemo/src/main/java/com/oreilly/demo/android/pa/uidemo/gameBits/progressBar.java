@@ -18,14 +18,21 @@ public class progressBar {
     private Line line;
 
     //Locations
-    public int gridLocation = 0;
+    private int gridLocation = 0;
 
     //Values
-    public float percBorder = (float).1;
-    public int linePos;
-    public int minLengthLine;
-    public int maxLengthLine;
-    public int lineSize;
+    private float percBorder = (float).1;
+    private int linePos;
+    private int minLengthLine;
+    private int maxLengthLine;
+    private int lineSize;
+
+    public final int fps = 50;
+
+    private int frame = 0;
+    private int cycle = 0;
+
+    private final int maxCycle = 50;
 
     public progressBar(int width, int height, int []c){
         this.width = width;
@@ -60,10 +67,29 @@ public class progressBar {
     }
 
     public Vector<DrawableObj> tick(){
+        frame++;
+        if (cycle == 50){
+            return null;
+        }
+        if (frame > 50){
+            cycle++;
+            resize();
+            frame = 0;
+        }
         Vector<DrawableObj> d = new Vector<DrawableObj>();
         d.clear();
         d.add(line);
         return d;
+    }
+
+    public void resize(){
+        if (line.getX1() == line.getX2()){
+            line.setY1(line.getY1() + maxLengthLine/maxCycle/2);
+            line.setY2(line.getY2() - maxLengthLine / maxCycle / 2);
+        } else {
+            line.setX1(line.getX1() + (maxLengthLine / maxCycle) / 2);
+            line.setX2(line.getX2() - (maxLengthLine / maxCycle) / 2);
+        }
     }
 
 }
