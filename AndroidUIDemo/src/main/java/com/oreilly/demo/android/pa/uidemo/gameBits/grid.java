@@ -33,7 +33,7 @@ public class grid {
         baseCoordinates = blocks[0][0].getBase();
         setBoxSize(width, height);
 
-        generateEnemies(25);
+        generateEnemies(12+difficulty*2);
 
         drawMe.addAll(backgroundGrid);
         drawMe.addAll(dynamic);
