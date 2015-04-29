@@ -68,10 +68,10 @@ public class progressBar {
 
     public Vector<DrawableObj> tick(){
         frame++;
-        if (cycle == 50){
+        if (cycle == maxCycle-1){
             return null;
         }
-        if (frame > 50){
+        if (frame > maxCycle){
             cycle++;
             resize();
             frame = 0;

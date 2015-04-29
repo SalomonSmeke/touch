@@ -42,7 +42,7 @@ public class objectMaster {
 
         drawList.addAll(Bar.tap());
         Log.i("Made it to init", "");
-        Difficulty = new difficultyDisplay(width, height);
+        Difficulty = new difficultyDisplay(width, height, difficulty);
         return drawList;
     }
 
@@ -53,9 +53,9 @@ public class objectMaster {
         if (temp == null){
             return null;
         }
-        drawList.addAll(Grid.tap(x, y));
+        drawList.addAll(temp);
         drawList.addAll(Bar.tap());
-        //drawList.addAll(Difficulty.tap());
+        drawList.addAll(Difficulty.tap());
         return drawList;
     }
 
@@ -63,8 +63,12 @@ public class objectMaster {
         drawList.clear();
         drawList.add(Background);
         drawList.addAll(Grid.tick());
-        drawList.addAll(Bar.tick());
-        //drawList.addAll(Difficulty.tick());
+        Vector<DrawableObj> temp = Bar.tick();
+        if (temp == null){
+            return null;
+        }
+        drawList.addAll(temp);
+        drawList.addAll(Difficulty.tick());
         return drawList;
     }
 }

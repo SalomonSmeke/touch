@@ -12,18 +12,9 @@ import java.util.Vector;
  * Created by Salomon on 4/22/15.
  */
 public class Game implements State {
-    //Pass In
+
     int difficulty = 0;
 
-    //FrameCounter
-
-    //EnemyArrays
-
-    //Grid
-
-    //TouchControls
-
-    //Drawings
     private Vector<DrawableObj> list = new Vector<DrawableObj>();
 
     public Game(final StateView sm) {
@@ -47,6 +38,9 @@ public class Game implements State {
         return list; }
     public Vector<DrawableObj> tick()  {
         list = gameView.tick();
+        if (list == null){
+            sm.toSelect();
+        }
         return list; }
     public Bundle save(Bundle bundle) { return bundle; }
     public Vector<DrawableObj> load(int width, int height, Bundle bundle) { return null; }
