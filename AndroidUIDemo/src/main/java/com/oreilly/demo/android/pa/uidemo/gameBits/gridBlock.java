@@ -23,7 +23,7 @@ public class gridBlock {
     private int boxDimension;
     private int[] c;
 
-    public void setPlaces(int width, int height, int cordinateX, int cordinateY){
+    public gridBlock(int width, int height, int cordinateX, int cordinateY, int [] c){
         this.width = width;
         this.height = height;
 
@@ -44,8 +44,10 @@ public class gridBlock {
             calcBoxLocation(width, cordinateX, cordinateY);
         }
 
+        this.c = c;
         square = new Square(boxDimension, boxDimension, x, y, c);
     }
+
 
     private void calcBoxLocation(int dimension, int cordinateX, int cordinateY){
         boxDimension = (int)((dimension - (dimension * percBorder))/5.0);
@@ -58,7 +60,11 @@ public class gridBlock {
         return square;
     }
 
-    public void setColor(int[]colors){
-        c = colors;
+    public int[] getBase(){
+        return new int[]{gridLocationX, gridLocationY};
+    }
+
+    public int [] getColor(){
+        return c;
     }
 }
