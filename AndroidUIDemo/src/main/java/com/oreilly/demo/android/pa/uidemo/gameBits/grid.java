@@ -224,12 +224,62 @@ public class grid {
 
     private int[] getCoordinatesR(int index){
         Random rgen = new Random();
-        int x = rgen.nextInt(5);
-        int y = rgen.nextInt(5);
+        int x;
+        int y;
+        
+        int[] temp = occupied.get(index);
+
+        int xplus;
+        if (temp[0]+1 > 4){
+            xplus = 4;
+        } else {
+            xplus = temp[0]+1;
+        }
+        int yplus;
+        if (temp[1]+1 > 4){
+            yplus = 4;
+        } else {
+            yplus = temp[1]+1;
+        }
+        int yless;
+        if (temp[1]-1 < 0){
+            yless = 0;
+        } else {
+            yless = temp[1]-1;
+        }
+        int xless;
+        if (temp[0]-1 < 0){
+            xless = 0;
+        } else {
+            xless = temp[0]-1;
+        }
+
+        if ((isContained(temp[0],yplus) && isContained(temp[0],yless) && isContained(xless,temp[1]) && isContained(xless,yless) && isContained(xless,yplus) && isContained(xplus,temp[1]) && isContained(xplus,yless) && isContained(xplus,yplus))){
+            return new int []{temp[0],temp[1]};
+        }
+        
+        if (rgen.nextBoolean()){
+            x = xplus;
+        } else {
+            x = xless;
+        }
+        if (rgen.nextBoolean()){
+            y = yplus;
+        } else {
+            y = yless;
+        }
 
         while(isContained(x,y)){
-            x = rgen.nextInt(5);
-            y = rgen.nextInt(5);
+            if (rgen.nextBoolean()){
+                x = xplus;
+            } else {
+                x = xless;
+            }
+            if (rgen.nextBoolean()){
+                y = yplus;
+            } else {
+                y = yless;
+            }
         }
         occupied.add(index,new int[]{x,y});
         occupied.remove(index+1);
@@ -287,30 +337,36 @@ public class grid {
             if(enemies.get(i).collide(x,y)){
                 if (difficulty == 0){
                     if (enemies.get(i).getColor()[4]>67-sensitivity && enemies.get(i).getColor()[4]<67+sensitivity){
+                        occupied.remove(i);
                         enemies.remove(i);
                         return true;
                     }
                 }
                 if (difficulty == 1){
-                    if ((enemies.get(i).getColor()[4]<146-sensitivity) && enemies.get(i).getColor()[4]>0+sensitivity){
+                    if ((enemies.get(i).getColor()[4]<147-sensitivity) && enemies.get(i).getColor()[4]<0+sensitivity){
+                        occupied.remove(i);
                         enemies.remove(i);
                         return true;
                     }
                     if (enemies.get(i).getColor()[4]>117-sensitivity && enemies.get(i).getColor()[4]<117+sensitivity){
+                        occupied.remove(i);
                         enemies.remove(i);
                         return true;
                     }
                 }
                 if (difficulty == 2){
-                    if ((enemies.get(i).getColor()[4]<146-sensitivity) && enemies.get(i).getColor()[4]>0+sensitivity){
+                    if ((enemies.get(i).getColor()[4]<147-sensitivity) && enemies.get(i).getColor()[4]<0+sensitivity){
+                        occupied.remove(i);
                         enemies.remove(i);
                         return true;
                     }
                     if (enemies.get(i).getColor()[4]>67-sensitivity && enemies.get(i).getColor()[4]<67+sensitivity){
+                        occupied.remove(i);
                         enemies.remove(i);
                         return true;
                     }
                     if (enemies.get(i).getColor()[4]>117-sensitivity && enemies.get(i).getColor()[4]<117+sensitivity){
+                        occupied.remove(i);
                         enemies.remove(i);
                         return true;
                     }
