@@ -1,5 +1,6 @@
 package com.oreilly.demo.android.pa.uidemo.gameBits;
 
+import com.oreilly.demo.android.pa.uidemo.draw.Circle;
 import com.oreilly.demo.android.pa.uidemo.draw.CircleF;
 import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
 
@@ -21,7 +22,7 @@ public class difficultyDisplay {
     private int height;
 
     //Box
-    private CircleF [] circles;
+    private DrawableObj [] circles;
 
     //Locations
     private int gridLocation = 0;
@@ -39,7 +40,7 @@ public class difficultyDisplay {
 
         int gridSize = 0;
 
-        circles = new CircleF[difficulty+1];
+        circles = new DrawableObj[difficulty+1];
 
         if (width > height){
             gridSize = (int)(height - height * percBorder);
@@ -53,12 +54,12 @@ public class difficultyDisplay {
                 circles[0] = new CircleF(circleSize,circlePosX,circlePosY,new int[]{255,250,172,152});
             }
             if (circles.length == 2){
-                circles[0] = new CircleF(circleSize,circlePosX,circlePosY-gridSize/5,new int[]{255,184,125,143});
-                circles[1] = new CircleF(circleSize,circlePosX,circlePosY+gridSize/5,new int[]{255,208,247,244});
+                circles[0] = new CircleF(circleSize,circlePosX,circlePosY-gridSize/10,new int[]{255,184,125,143});
+                circles[1] = new CircleF(circleSize,circlePosX,circlePosY+gridSize/10,new int[]{255,208,247,244});
             }
             if (circles.length == 3){
                 circles[0] = new CircleF(circleSize,circlePosX,circlePosY-gridSize/5,new int[]{255,184,125,143});
-                circles[1] = new CircleF(circleSize,circlePosX,circlePosY+gridSize/5,new int[]{255,208,247,244});
+                circles[1] = new Circle(circleSize,circlePosX,circlePosY+gridSize/5,new int[]{255,255,255,255});
                 circles[2] = new CircleF(circleSize,circlePosX,circlePosY,new int[]{255,250,172,152});
             }
         } else {
@@ -78,7 +79,7 @@ public class difficultyDisplay {
             }
             if (circles.length == 3){
                 circles[0] = new CircleF(circleSize,circlePosY-gridSize/5,circlePosX,new int[]{255,184,125,143});
-                circles[1] = new CircleF(circleSize,circlePosY+gridSize/5,circlePosX,new int[]{255,208,247,244});
+                circles[1] = new Circle(circleSize,circlePosY+gridSize/5,circlePosX,new int[]{255,255,255,255});
                 circles[2] = new CircleF(circleSize,circlePosY,circlePosX,new int[]{255,250,172,152});
             }
         }

@@ -68,6 +68,14 @@ public class Painter implements Visitor<Void>{
         return null;
     }
 
+    public Void onCircle(Circle ci){
+        int [] c = ci.getC();
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setARGB(c[0],c[1],c[2],c[3]);
+        canvas.drawCircle(ci.getX(),ci.getY(),ci.getRadius(),paint);
+        return null;
+    }
+
     public Void onText(Text t){
 
 

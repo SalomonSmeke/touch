@@ -10,5 +10,7 @@ public interface Visitor<Result> {
 	Result onSquare(Square sq);
     Result onSquareF(SquareF sq);
     Result onCircleF(CircleF ci);
+    Result onCircle(Circle ci);
 	Result onText(Text t);
+
 }

@@ -46,6 +46,7 @@ public class enemy {
     }
 
     public void setColor(int [] c){
+        circle = new CircleF(r,x,y,c);
         this.c = c;
     }
 
