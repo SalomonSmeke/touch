@@ -72,7 +72,11 @@ public class DotView extends View {
     }
 
     public boolean hasState(){
-        if (wrapper.getState()==null){
+        if (wrapper != null) {
+            if (wrapper.getState() == null) {
+                return false;
+            }
+        } else {
             return false;
         }
         return true;
