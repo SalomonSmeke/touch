@@ -211,6 +211,6 @@ public class Menu implements State{
      *
      * @param x set x
      */
-    public void setVar(int x){}
+    public void setVar(int []x){}
 
 }

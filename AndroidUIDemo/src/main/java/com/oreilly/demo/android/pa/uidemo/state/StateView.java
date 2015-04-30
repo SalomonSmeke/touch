@@ -18,7 +18,7 @@ interface StateView{
     void toSelect();
     void toMenu();
     void toGame(int difficulty);
-    void toEnd();
+    void toEnd(int difficulty, int barwidth);
 
     // Actions
 //    Vector<DrawableObj> start(int width, int height);

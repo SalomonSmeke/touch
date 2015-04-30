@@ -21,6 +21,9 @@ public class StateWrapper implements StateOverlord {
     private int width;
     private int height;
     private Vector<DrawableObj> DrawMe = null;
+    private int difficulty;
+    private int frame = 0;
+    private boolean inGame = false;
 
     /**
      *
@@ -55,9 +58,10 @@ public class StateWrapper implements StateOverlord {
     /**
      * draw the state per tick
      */
-    public void tick() { DrawMe = currentState.tick();
+    public void tick() {if (inGame)frame++;
+        DrawMe = currentState.tick();
     if (DrawMe==null){
-        toSelect();
+        toEnd(difficulty,frame);
     }
     }
 
@@ -108,23 +112,30 @@ public class StateWrapper implements StateOverlord {
 
     //State transitions
     public void toMenu(){
+        inGame = false;
         MENU = new Menu(this);
         setState(MENU);
     }
 
     public void toSelect(){
+        inGame = false;
         SELECT = new Select(this);
         setState(SELECT);
     }
 
     public void toGame(int difficulty){
+        frame = 0;
+        inGame = true;
         GAME = new Game(this);
-        GAME.setVar(difficulty);
+        GAME.setVar(new int[]{difficulty});
+        this.difficulty = difficulty;
         setState(GAME);
     }
 
-    public void toEnd(){
+    public void toEnd(int difficulty, int barwidth){
+        inGame = false;
         END = new End(this);
+        END.setVar(new int[]{difficulty,barwidth});
         setState(END);
     }
 

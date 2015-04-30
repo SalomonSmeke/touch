@@ -54,5 +54,5 @@ interface State {
      *
      * @param var for saving
      */
-    void setVar(int var);
+    void setVar(int []var);
 }

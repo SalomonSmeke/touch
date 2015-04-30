@@ -29,6 +29,7 @@ public class Game implements State {
     }
 
     private final StateView sm;
+    private int frame;
 
     private objectMaster gameView;
 
@@ -63,10 +64,11 @@ public class Game implements State {
      * @return list of drawable objects
      */
     public Vector<DrawableObj> tick()  {
+        frame ++;
         list.clear();
         list = gameView.tick();
         if (list == null){
-            sm.toSelect();
+            sm.toEnd(difficulty,frame);
         }
         return list; }
 
@@ -86,5 +88,5 @@ public class Game implements State {
      */
     public Vector<DrawableObj> load(int width, int height, Bundle bundle) { return null; }
 
-    public void setVar(int difficulty){this.difficulty = difficulty;}
+    public void setVar(int []difficulty){this.difficulty = difficulty[0];}
 }
