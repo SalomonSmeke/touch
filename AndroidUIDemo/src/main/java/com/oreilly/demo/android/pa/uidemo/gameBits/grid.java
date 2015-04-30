@@ -178,9 +178,17 @@ public class grid {
 
     private int[] baseCoordinates;
 
+    private int difficulty;
+
+    private int sensitivity;
+
     int boxSize;
 
     public grid(int width, int height, int difficulty){
+
+        sensitivity = 18-difficulty*3;
+
+        this.difficulty = difficulty;
         for (int x = 0; x < 5; x++){
             for (int y = 0; y < 5; y++){
                 blocks[x][y] = new gridBlock(width, height, x, y, new int[]{255,243,142,150});
@@ -241,7 +249,49 @@ public class grid {
     private boolean enemyAt(int x, int y){
         for (int i = 0; i < enemies.size(); i++){
             if(enemies.get(i).collide(x,y)){
-                enemies.remove(i);
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean enemyMatch(int x, int y){
+        for (int i = 0; i < enemies.size(); i++){
+            if(enemies.get(i).collide(x,y)){
+                if (difficulty == 0){
+                    if (enemies.get(i).getColor()[4]<67-sensitivity && enemies.get(i).getColor()[4]>67+sensitivity){
+                        enemies.remove(i);
+                        return true;
+                    }
+                }
+                if (difficulty == 1){
+                    if ((enemies.get(i).getColor()[4]>146-sensitivity) && enemies.get(i).getColor()[4]>0+sensitivity){
+                        enemies.remove(i);
+                        return true;
+                    }
+                    if (enemies.get(i).getColor()[4]<117-sensitivity && enemies.get(i).getColor()[4]>117+sensitivity){
+                        enemies.remove(i);
+                        return true;
+                    }
+                }
+                if (difficulty == 2){
+                    if ((enemies.get(i).getColor()[4]>146-sensitivity) && enemies.get(i).getColor()[4]>0+sensitivity){
+                        enemies.remove(i);
+                        return true;
+                    }
+                    if (enemies.get(i).getColor()[4]<67-sensitivity && enemies.get(i).getColor()[4]>67+sensitivity){
+                        enemies.remove(i);
+                        return true;
+                    }
+                    if (enemies.get(i).getColor()[4]<117-sensitivity && enemies.get(i).getColor()[4]>117+sensitivity){
+                        enemies.remove(i);
+                        return true;
+                    }
+
+                }
+
+
                 return true;
             }
         }
@@ -250,6 +300,9 @@ public class grid {
 
     public Vector<DrawableObj> tap(int x, int y){
         if(enemyAt(x,y)) {
+            if (enemyMatch(x,y)){
+
+            }
             reAdd();
         }
         if (enemies.size() == 0){
@@ -269,10 +322,25 @@ public class grid {
     }
 
     public Vector<DrawableObj> tick(){
+        for (int i = 0; i < enemies.size(); i++){
+
+            nextColor(i);
+
+        }
+        reAdd();
         return drawMe;
     }
 
-    private void nextColor(){
-
+    private void nextColor(int i){
+        int []c = enemies.get(i).getColor();
+        int index = c[4];
+        if (index == 146){
+            c = clrs[0];
+            enemies.get(i).setColor(c);
+        } else {
+            c = clrs[index+1];
+            enemies.get(i).setColor(c);
+        }
     }
+    //0, 67, 117
 }
