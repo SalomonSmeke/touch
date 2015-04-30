@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.oreilly.demo.android.pa.uidemo.draw.Circle;
 import com.oreilly.demo.android.pa.uidemo.draw.CircleF;
 import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
+import com.oreilly.demo.android.pa.uidemo.draw.Text;
 
 import java.util.Vector;
 
@@ -24,6 +25,7 @@ public class End implements State {
     private int remainingFrames = 0;
 
     private DrawableObj[] circles;
+    private DrawableObj[] text;
 
     private Vector<DrawableObj> drawMe = new Vector<DrawableObj>();
 
@@ -73,19 +75,27 @@ public class End implements State {
 
             if (circles.length == 1){
                 circles[0] = new CircleF(circleSize,circlePosY,circlePosX,new int[]{255,250,172,152});
+                text[0] = new Text("CLEARED", 0, 0, new int[]{255,250,172,152});
             }
             if (circles.length == 2){
                 circles[0] = new CircleF(circleSize,circlePosY-gridSize/10,circlePosX,new int[]{255,184,125,143});
                 circles[1] = new CircleF(circleSize,circlePosY+gridSize/10,circlePosX,new int[]{255,208,247,244});
+                text[0] = new Text("CLEARED", 0, 0, new int[]{255,184,125,143});
+                text[0] = new Text("CLEARED", 0, 0, new int[]{255,208,247,244});
+
             }
             if (circles.length == 3){
                 circles[0] = new CircleF(circleSize,circlePosY-gridSize/5,circlePosX,new int[]{255,184,125,143});
                 circles[1] = new Circle(circleSize,circlePosY+gridSize/5,circlePosX,new int[]{255,255,255,255});
                 circles[2] = new CircleF(circleSize,circlePosY,circlePosX,new int[]{255,250,172,152});
+                text[0] = new Text("CLEARED", 0, 0, new int[]{255,184,125,143});
+                text[0] = new Text("CLEARED", 0, 0, new int[]{255,255,255,255});
+                text[0] = new Text("CLEARED", 0, 0, new int[]{255,250,172,152});
             }
         }
         for (int i = 0; i<circles.length; i++){
             drawMe.add(circles[i]);
+            drawMe.add(text[i]);
         }
         return drawMe;
     }
