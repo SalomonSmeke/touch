@@ -163,6 +163,11 @@ public class TouchMe extends Activity {
             startTime = SystemClock.uptimeMillis();
             customHandler.postDelayed(updateTimerThread, 0);
         }
+        dotView.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override public void onFocusChange(View v, boolean hasFocus) {
+            }
+        });
+
     }
 
 
