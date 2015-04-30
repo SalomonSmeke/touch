@@ -1,0 +1,17 @@
+Project 5 - Monster's Game
+Group 1
+30 April 2015
+
+MVC vs. MVA:
+//needs completion
+
+Use of the SOLID and other design principles:
+For this project we made use of multiple object-oriented design principles. We decided to make heavy use of the visitor principle because it made it easiest to draw all of the objects onto the canvas when we needed them to be drawn. Each of the shapes and drawable objects are outfitted with the visitor design principle. Within the SOLID principles we made use of the interface segregation because it made it easiest to implement the different states as well as each of the different elements that comprise each of the states while they are running. For running the entire game, switching views, as well as running tasks, we decided to do everything using the state design principle. The progression of our menus/game is a progression of states that switch and redraw the canvas to preform their designed purpose. We also used the observer/event design principle to control all of the touch events from the user as well as for the changing of states. The states we created generally change based on input from the user so we needed to make use of event controlling.
+
+
+Impact on Testability:
+With each piece of the project that we needed to build out, we decide to separate them as much as possible in order to aid creating tests and making them useful. Each of our classes, interfaces, and objects are testable individually as well as the elements of game logic. The majority of them are able to be tested fairly simply because of the way that we abstract everything out instead of loading it all into one piece.
+
+
+Concurrency:
+//needs completion
