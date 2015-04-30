@@ -42,11 +42,6 @@ public class Dots {
         notifyListener();
     }
 
-    /** Remove all dots. */
-    public void clearDots() {
-        dots.clear();
-        notifyListener();
-    }
 
     private void notifyListener() {
         if (null != dotsChangeListener) {
