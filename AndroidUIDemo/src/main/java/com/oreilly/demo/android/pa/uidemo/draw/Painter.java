@@ -14,6 +14,10 @@ public class Painter implements Visitor<Void>{
     private static Canvas canvas;
     private Paint paint = new Paint();
 
+    /**
+     *
+     * @param canvas painting canvas for the whole app
+     */
     public Painter(final Canvas canvas){
         this.canvas = canvas;
         paint.setStyle(Paint.Style.STROKE);
@@ -21,6 +25,11 @@ public class Painter implements Visitor<Void>{
         paint.setColor(android.graphics.Color.WHITE);
     }
 
+    /**
+     *
+     * @param l line
+     * @return state machine stuff
+     */
     public Void onLine(Line l){
         int [] c = l.getC();
         paint.setARGB(c[0],c[1],c[2],c[3]);
@@ -30,12 +39,22 @@ public class Painter implements Visitor<Void>{
         return null;
     }
 
+    /**
+     *
+     * @param sp sprite
+     * @return state machine stuff
+     */
     public Void onSprite(Sprite sp){
 
 
         return null;
     }
 
+    /**
+     *
+     * @param sq square
+     * @return state machine stuff
+     */
     public Void onSquare(Square sq){
         float top = sq.getY();
         float bottom = sq.getY()+sq.getHeight();
@@ -48,6 +67,11 @@ public class Painter implements Visitor<Void>{
         return null;
     }
 
+    /**
+     *
+     * @param sq square with fill
+     * @return state machine stuff
+     */
     public Void onSquareF(SquareF sq){
         float top = sq.getY();
         float bottom = sq.getY()+sq.getHeight();
@@ -60,6 +84,11 @@ public class Painter implements Visitor<Void>{
         return null;
     }
 
+    /**
+     *
+     * @param ci circle with fill
+     * @return state machine stuff
+     */
     public Void onCircleF(CircleF ci){
         int [] c = ci.getC();
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
@@ -68,6 +97,11 @@ public class Painter implements Visitor<Void>{
         return null;
     }
 
+    /**
+     *
+     * @param ci circle
+     * @return state machine stuff
+     */
     public Void onCircle(Circle ci){
         int [] c = ci.getC();
         paint.setStyle(Paint.Style.STROKE);
@@ -76,6 +110,11 @@ public class Painter implements Visitor<Void>{
         return null;
     }
 
+    /**
+     *
+     * @param t text
+     * @return state machine stuff
+     */
     public Void onText(Text t){
 
 
