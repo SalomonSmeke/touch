@@ -6,6 +6,11 @@ import java.util.Random;
 import java.util.Vector;
 
 /**
+ * Grid draws the grid on the game screen with a 5x5 set of squares.
+ * It does this by iterating through the possible dimensions and then drawing
+ * them to the screen. It also generates the enemies inside of the grid as well
+ * as removes them when their box is tapped.
+ *
  * Created by Salomon on 4/26/15.
  */
 public class grid {

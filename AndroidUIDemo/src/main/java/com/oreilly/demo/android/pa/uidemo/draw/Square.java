@@ -1,6 +1,7 @@
 package com.oreilly.demo.android.pa.uidemo.draw;
 
-/**
+/** Description of Square
+ * Square is designed to draw a square object of defined width and height beginning at (x,y) and of color c
  * Created by Salomon on 4/22/15.
  */
 public class Square implements DrawableObj {

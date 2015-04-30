@@ -9,6 +9,9 @@ import com.oreilly.demo.android.pa.uidemo.draw.Square;
 import com.oreilly.demo.android.pa.uidemo.draw.SquareF;
 
 /**
+ * Menu is the very initial screen of the game where a flashing dot requires the user's
+ * touch to go into the difficulty menu.
+ *
  * Created by Salomon on 4/22/15.
  */
 public class Menu implements State{

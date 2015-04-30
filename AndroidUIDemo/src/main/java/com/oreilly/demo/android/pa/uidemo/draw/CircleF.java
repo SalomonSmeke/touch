@@ -1,7 +1,10 @@
 package com.oreilly.demo.android.pa.uidemo.draw;
 
-/**
- * Created by Salomon on 4/22/15.
+/** Description of CircleF
+ * CircleF is a class designed to create a circle with a fill
+ *
+ * @author Salomon Smeke
+ *
  */
 public class CircleF implements DrawableObj {
 

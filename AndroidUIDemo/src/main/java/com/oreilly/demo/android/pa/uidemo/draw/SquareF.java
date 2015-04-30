@@ -1,6 +1,7 @@
 package com.oreilly.demo.android.pa.uidemo.draw;
 
-/**
+/** Description of SquareF
+ * SquareF is the same as Square, but filed.
  * Created by Salomon on 4/22/15.
  */
 public class SquareF implements DrawableObj {

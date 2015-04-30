@@ -10,6 +10,8 @@ import java.util.Vector;
 
 
 /**
+ * StateWrapper to easily transition from state to state
+ *
  * Created by Salomon on 4/22/15.
  */
 public class StateWrapper implements StateOverlord {

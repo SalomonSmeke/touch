@@ -4,6 +4,9 @@ import com.oreilly.demo.android.pa.uidemo.draw.CircleF;
 import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
 
 /**
+ * The enemy class is designed to draw and manage the enemies or 'monsters' as they appear
+ * and move about the screen.
+ *
  * Created by Salomon on 4/26/15.
  */
 public class enemy {

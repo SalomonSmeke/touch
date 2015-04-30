@@ -6,6 +6,10 @@ import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
 import java.util.Vector;
 
 /**
+ * difficultyDisplay is the status underneath the grid where the user has picked one of three pre-defined difficulties.
+ * These are each represented with one, two, or three circles inside
+ * depicting their respective difficulty level.
+ *
  * Created by Salomon on 4/26/15.
  */
 public class difficultyDisplay {

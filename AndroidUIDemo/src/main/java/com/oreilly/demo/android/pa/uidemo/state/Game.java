@@ -9,6 +9,9 @@ import com.oreilly.demo.android.pa.uidemo.gameBits.objectMaster;
 import java.util.Vector;
 
 /**
+ * Game state is the state that controls the drawing of the game as well as the
+ * gameplay itself.
+ *
  * Created by Salomon on 4/22/15.
  */
 public class Game implements State {

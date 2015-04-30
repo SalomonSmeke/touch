@@ -4,7 +4,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-/**
+/** Description of Painter
+ * Painter is designed to paint the different objects that the visitor accepts to the canvas
+ * 
  * Created by Salomon on 4/22/15.
  */
 public class Painter implements Visitor<Void>{

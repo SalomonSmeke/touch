@@ -1,6 +1,8 @@
 package com.oreilly.demo.android.pa.uidemo.draw;
 
-/**
+/** Description of Line
+ * Line is a basic class that draws a line from coordinate to coordinte of any color
+ *
  * Created by Salomon on 4/22/15.
  */
 public class Line implements DrawableObj {

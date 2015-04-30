@@ -7,6 +7,8 @@ import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
 import java.util.Vector;
 
 /**
+ * The end state is the end of the game.
+ *
  * Created by Salomon on 4/22/15.
  */
 public class End implements State {
