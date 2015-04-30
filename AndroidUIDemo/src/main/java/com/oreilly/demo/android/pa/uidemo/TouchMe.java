@@ -112,7 +112,6 @@ public class TouchMe extends Activity {
 
     private void onTime(int mili) {
         if (mili % 20 == 0) {
-            dotView.invalidate("FRAME", 0, 0);
             if (dotView.hasState()) {
                 dotView.invalidate("FRAME", 0, 0);
             }
