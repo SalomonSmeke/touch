@@ -109,8 +109,11 @@ public class Painter implements Visitor<Void> {
      * @return state machine stuff
      */
     public Void onText(Text t) {
-
-
+        int [] c = t.getC();
+        paint.setStyle(Paint.Style.FILL_AND_STROKE);
+        paint.setColor(c[0]);
+        paint.setTextSize(t.getTextSize());
+        canvas.drawText(t.getText(), t.getX(), t.getY(), paint);
         return null;
     }
 

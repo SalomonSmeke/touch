@@ -8,6 +8,88 @@ package com.oreilly.demo.android.pa.uidemo.draw;
  */
 public class Text implements DrawableObj {
 
+
+    private int textSize;
+    private String text;
+    private int x;
+    private int y;
+    private int[] c;
+
+    /**
+     * @param x      coordinate
+     * @param y      coordinate
+     * @param c      is color
+     */
+    public Text(String text, int x, int y, int[] c) {
+        this.text = text;
+        this.textSize = textSize;
+        this.c = c;
+        this.x = x;
+        this.y = y;
+    }
+
+
+    public void setText(String text){
+        this.text = text;
+    }
+    /**
+     * @param textSize is the radius of the circle.
+     */
+    public void setTextSize(int textSize) {
+        this.textSize = textSize;
+    }
+
+    /**
+     * @param x x coordinate
+     */
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    /**
+     * @param y y coordinate
+     */
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    /**
+     * @param c color
+     */
+    public void setC(int[] c) {
+        this.c = c;
+    }
+
+    public String getText() { return text;}
+
+    /**
+     * @return textSize
+     */
+    public int getTextSize() {
+        return textSize;
+    }
+
+    /**
+     * @return y coordinate
+     */
+    public int getY() {
+        return y;
+    }
+
+    /**
+     * @return x coordinate
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * @return color
+     */
+    public int[] getC() {
+        return c;
+    }
+
     /**
      * @param x x coordinate
      * @param y y coordinate
