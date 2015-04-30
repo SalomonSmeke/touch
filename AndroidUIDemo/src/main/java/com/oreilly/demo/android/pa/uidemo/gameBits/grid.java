@@ -15,6 +15,9 @@ import java.util.Vector;
  */
 public class grid {
 
+    /**
+     * colors for the enemies to cycle through
+     */
     private int[][] clrs = new int[][]{
 
             new int[]{255,184,125,143,0},
@@ -187,6 +190,13 @@ public class grid {
 
     int boxSize;
 
+    /**
+     * create the grid for enemies
+     *
+     * @param width width of device
+     * @param height height of device
+     * @param difficulty difficulty of level
+     */
     public grid(int width, int height, int difficulty){
 
         sensitivity = 11-difficulty*3;
@@ -208,6 +218,10 @@ public class grid {
         drawMe.addAll(dynamic);
     }
 
+    /**
+     *
+     * @return BOX coordinates
+     */
     private int[] getCoordinates(){
         Random rgen = new Random();
         int x = rgen.nextInt(5);
@@ -222,6 +236,11 @@ public class grid {
         return new int[]{x,y};
     }
 
+    /**
+     *
+     * @param index which object you are moving
+     * @return coordinates to place the next dot
+     */
     private int[] getCoordinatesR(int index){
         Random rgen = new Random();
         int x;
@@ -286,6 +305,13 @@ public class grid {
         return new int[]{x,y};
     }
 
+    /**
+     * checks if coordinates trying to place enemy at is occupied
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return true/false
+     */
     private boolean isContained(int x, int y){
         for (int i = 0; i < occupied.size(); i++){
             if (occupied.get(i)[0] == x && occupied.get(i)[1] == y) return true;
@@ -302,6 +328,10 @@ public class grid {
         }
     }
 
+    /**
+     *
+     * @param size how many enemies
+     */
     private void generateEnemies(int size){
         enemies = new Vector<enemy>();
         Random rgen = new Random();
@@ -313,6 +343,11 @@ public class grid {
         }
     }
 
+    /**
+     * moves enemy i to random location is adjacent space is available
+     *
+     * @param i move enemy i
+     */
     private void moveEnemies(int i){
         Random rgen = new Random();
             enemies.add(i,new enemy(enemies.get(i).getColor()));
@@ -322,6 +357,13 @@ public class grid {
             dynamic.remove(i+1);
     }
 
+    /**
+     * is there an enemy at given location?
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return true/false
+     */
     private boolean enemyAt(int x, int y){
         for (int i = 0; i < enemies.size(); i++){
             if(enemies.get(i).collide(x,y)){
@@ -332,6 +374,13 @@ public class grid {
         return false;
     }
 
+    /**
+     * checks if the enemy is the right color
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return true/false
+     */
     private boolean enemyMatch(int x, int y){
         for (int i = 0; i < enemies.size(); i++){
             if(enemies.get(i).collide(x,y)){
@@ -378,6 +427,12 @@ public class grid {
         return false;
     }
 
+    /**
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return drawable
+     */
     public Vector<DrawableObj> tap(int x, int y){
         if(enemyAt(x,y)) {
             if (enemyMatch(x,y)){
@@ -391,6 +446,9 @@ public class grid {
         return drawMe;
     }
 
+    /**
+     * adds all the elements to drawable object array
+     */
     private void reAdd(){
         dynamic.clear();
         drawMe.clear();
@@ -401,6 +459,11 @@ public class grid {
         drawMe.addAll(dynamic);
     }
 
+    /**
+     * frame rate
+     *
+     * @return draw each frame
+     */
     public Vector<DrawableObj> tick(){
         if (frame > 100){
             frame = 0;
@@ -420,6 +483,11 @@ public class grid {
         return drawMe;
     }
 
+    /**
+     * iterate through colors
+     *
+     * @param i enemy
+     */
     private void nextColor(int i){
         int []c = enemies.get(i).getColor();
         int index = c[4];
