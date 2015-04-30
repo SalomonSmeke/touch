@@ -55,7 +55,11 @@ public class StateWrapper implements StateOverlord {
     /**
      * draw the state per tick
      */
-    public void tick() { DrawMe = currentState.tick();}
+    public void tick() { DrawMe = currentState.tick();
+    if (DrawMe==null){
+        toSelect();
+    }
+    }
 
     /**
      *

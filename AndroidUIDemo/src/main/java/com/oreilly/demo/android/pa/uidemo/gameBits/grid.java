@@ -435,9 +435,7 @@ public class grid {
      */
     public Vector<DrawableObj> tap(int x, int y){
         if(enemyAt(x,y)) {
-            if (enemyMatch(x,y)){
-
-            }
+                enemyMatch(x,y);
             reAdd();
         }
         if (enemies.size() == 0){
