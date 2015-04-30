@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.oreilly.demo.android.pa.uidemo.draw.Circle;
 import com.oreilly.demo.android.pa.uidemo.draw.CircleF;
 import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
+import com.oreilly.demo.android.pa.uidemo.draw.Line;
 import com.oreilly.demo.android.pa.uidemo.draw.Text;
 
 import java.util.Vector;
@@ -93,6 +94,39 @@ public class End implements State {
         for (int i = 0; i<circles.length; i++){
             drawMe.add(circles[i]);
         }
+
+        int gridLocation = 0;
+        int minLengthLine = 0;
+        int maxLengthLine = 0;
+        int linePos = 0;
+        Line line;
+        int maxCycle = 50;
+        maxCycle = maxCycle - difficulty*10;
+
+        if (width > height){
+            gridSize = (int)(height - height * percBorder);
+            gridLocation = (int)(width/2.0 - gridSize/2.0);
+            minLengthLine = (int)(height * percBorder / 2);
+            maxLengthLine = (int)(height - height * percBorder / 2);
+            linePos = gridLocation/3;
+            line = new Line(linePos,linePos,minLengthLine,maxLengthLine,new int[]{255, 243, 142, 150});
+        } else {
+            gridSize = (int)(width - width * percBorder);
+            gridLocation = (int)(height/2.0 - gridSize/2.0);
+            minLengthLine = (int)(width * percBorder / 2);
+            maxLengthLine = (int)(width - width * percBorder / 2);
+            linePos = gridLocation/3;
+            line = new Line(minLengthLine,maxLengthLine,linePos,linePos,new int[]{255, 243, 142, 150});
+        }
+        if (line.getX1() == line.getX2()){
+            line.setY1(line.getY1() + ((maxLengthLine / maxCycle) / 2)*remainingFrames);
+            line.setY2(line.getY2() - ((maxLengthLine / maxCycle) / 2)*remainingFrames);
+        } else {
+            line.setX1(line.getX1() + ((maxLengthLine / maxCycle) / 2)*remainingFrames);
+            line.setX2(line.getX2() - ((maxLengthLine / maxCycle) / 2)*remainingFrames);
+        }
+
+        drawMe.add(line);
         drawMe.add(text);
         return drawMe;
     }
@@ -134,7 +168,7 @@ public class End implements State {
      */
     public void setVar(int []x){
         difficulty = x[0];
-        remainingFrames = x[1];
+        remainingFrames = x[1]/50;
 
 
     }
