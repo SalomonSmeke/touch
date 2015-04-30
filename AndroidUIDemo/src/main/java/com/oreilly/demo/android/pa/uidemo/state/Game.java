@@ -55,7 +55,7 @@ public class Game implements State {
         list.clear();
         list = gameView.tap(x,y);
         if (list == null){
-            sm.toSelect();
+            sm.toEnd(difficulty,frame);
         }
         return list; }
 
@@ -68,7 +68,7 @@ public class Game implements State {
         list.clear();
         list = gameView.tick();
         if (list == null){
-            sm.toEnd(difficulty,frame);
+            sm.toSelect();
         }
         return list; }
 

@@ -61,7 +61,7 @@ public class StateWrapper implements StateOverlord {
     public void tick() {if (inGame)frame++;
         DrawMe = currentState.tick();
     if (DrawMe==null){
-        toEnd(difficulty,frame);
+        toSelect();
     }
     }
 

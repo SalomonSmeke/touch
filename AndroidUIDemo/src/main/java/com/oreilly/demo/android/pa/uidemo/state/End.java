@@ -21,6 +21,7 @@ public class End implements State {
     private int width;
     private int height;
     private int difficulty;
+    private int remainingFrames = 0;
 
     private DrawableObj[] circles;
 
@@ -37,45 +38,6 @@ public class End implements State {
     public Vector<DrawableObj> start(int width, int height)  {
         this.width = width;
         this.height = height;
-        return null; }
-
-    /**
-     *
-     * @param x x coordinate
-     * @param y y coordinate
-     * @return null
-     */
-    public Vector<DrawableObj> tap( int x, int y)  { return null; }
-
-    /**
-     *
-     * @return null
-     */
-    public Vector<DrawableObj> tick()  { return null; }
-
-    /**
-     * used for saving the state
-     *
-     * @param bundle THE Bundle bundle
-     * @return bundle
-     */
-    public Bundle save(Bundle bundle) { return bundle; }
-
-    /**
-     *
-     * @param width width of screen
-     * @param height height of screen
-     * @param bundle THE Bundle bundle
-     * @return null
-     */
-    public Vector<DrawableObj> load(int width, int height, Bundle bundle) { return null; }
-
-    /**
-     *
-     * @param x x coordinate
-     */
-    public void setVar(int []x){
-        difficulty = x[0];
         float percBorder = .1f;
         int gridSize = 0;
 
@@ -125,6 +87,47 @@ public class End implements State {
         for (int i = 0; i<circles.length; i++){
             drawMe.add(circles[i]);
         }
+        return drawMe;
+    }
+
+    /**
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return null
+     */
+    public Vector<DrawableObj> tap( int x, int y)  { return drawMe; }
+
+    /**
+     *
+     * @return null
+     */
+    public Vector<DrawableObj> tick()  { return drawMe; }
+
+    /**
+     * used for saving the state
+     *
+     * @param bundle THE Bundle bundle
+     * @return bundle
+     */
+    public Bundle save(Bundle bundle) { return bundle; }
+
+    /**
+     *
+     * @param width width of screen
+     * @param height height of screen
+     * @param bundle THE Bundle bundle
+     * @return null
+     */
+    public Vector<DrawableObj> load(int width, int height, Bundle bundle) { return null; }
+
+    /**
+     *
+     * @param x x coordinate
+     */
+    public void setVar(int []x){
+        difficulty = x[0];
+        remainingFrames = x[1];
 
 
     }
