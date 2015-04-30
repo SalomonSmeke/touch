@@ -7,6 +7,8 @@ import com.oreilly.demo.android.pa.uidemo.draw.DrawableObj;
 import java.util.Vector;
 
 /**
+ * interface for state
+ *
  * Created by Salomon on 4/22/15.
  */
 interface State {

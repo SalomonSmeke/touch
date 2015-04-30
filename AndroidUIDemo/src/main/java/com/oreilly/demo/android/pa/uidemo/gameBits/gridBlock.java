@@ -3,6 +3,9 @@ package com.oreilly.demo.android.pa.uidemo.gameBits;
 import com.oreilly.demo.android.pa.uidemo.draw.Square;
 
 /**
+ * gridBlock is used to calculate the necessary size of each block in the grid
+ * based on the screen size (also manages what to do in case of rotation).
+ *
  * Created by Thomas on 4/26/15.
  */
 public class gridBlock {

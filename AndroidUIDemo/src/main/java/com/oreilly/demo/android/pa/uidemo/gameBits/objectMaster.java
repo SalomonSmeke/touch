@@ -8,6 +8,8 @@ import com.oreilly.demo.android.pa.uidemo.draw.SquareF;
 import java.util.Vector;
 
 /**
+ *The objectMaster takes care of adding all of the objects in the game
+ *
  * Created by Salomon on 4/26/15.
  */
 public class objectMaster {

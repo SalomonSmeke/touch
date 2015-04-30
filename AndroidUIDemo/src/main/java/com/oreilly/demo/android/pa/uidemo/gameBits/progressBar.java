@@ -6,6 +6,10 @@ import com.oreilly.demo.android.pa.uidemo.draw.Line;
 import java.util.Vector;
 
 /**
+ * The progressBar is displayed about the grid and is designed to shorten as the game's
+ * time winds down. It remains centered while it shortens to indicate how much gameplay
+ * time is left.
+ *
  * Created by Salomon on 4/26/15.
  */
 public class progressBar {

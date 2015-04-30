@@ -11,6 +11,8 @@ import com.oreilly.demo.android.pa.uidemo.draw.Square;
 import java.util.Vector;
 
 /**
+ * Select is where the user selects which difficulty they would like to play
+ *
  * Created by Salomon on 4/22/15.
  */
 public class Select implements State {
