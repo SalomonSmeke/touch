@@ -25,7 +25,7 @@ public class End implements State {
     private int remainingFrames = 0;
 
     private DrawableObj[] circles;
-    private DrawableObj[] text;
+    private Text text;
 
     private Vector<DrawableObj> drawMe = new Vector<DrawableObj>();
 
@@ -53,6 +53,9 @@ public class End implements State {
             int circlePosY = (int)(height/2.0);
             int circlePosX = gridLocation + gridSize + gridLocation/2;
 
+            text = new Text("CLEARED", width/2, height/2, new int[]{255,184,125,143});
+            text.setTextSize(height/4);
+
             if (circles.length == 1){
                 circles[0] = new CircleF(circleSize,circlePosX,circlePosY,new int[]{255,250,172,152});
             }
@@ -73,30 +76,26 @@ public class End implements State {
             int circlePosY = (int)(width/2.0);
             int circlePosX = gridLocation + gridSize + gridLocation/2;
 
+            text = new Text("CLEARED", height/2, width/2, new int[]{255,184,125,143});
+            text.setTextSize(width/4);
+
             if (circles.length == 1){
                 circles[0] = new CircleF(circleSize,circlePosY,circlePosX,new int[]{255,250,172,152});
-                text[0] = new Text("CLEARED", 0, 0, new int[]{255,250,172,152});
             }
             if (circles.length == 2){
                 circles[0] = new CircleF(circleSize,circlePosY-gridSize/10,circlePosX,new int[]{255,184,125,143});
                 circles[1] = new CircleF(circleSize,circlePosY+gridSize/10,circlePosX,new int[]{255,208,247,244});
-                text[0] = new Text("CLEARED", 0, 0, new int[]{255,184,125,143});
-                text[0] = new Text("CLEARED", 0, 0, new int[]{255,208,247,244});
-
             }
             if (circles.length == 3){
                 circles[0] = new CircleF(circleSize,circlePosY-gridSize/5,circlePosX,new int[]{255,184,125,143});
                 circles[1] = new Circle(circleSize,circlePosY+gridSize/5,circlePosX,new int[]{255,255,255,255});
                 circles[2] = new CircleF(circleSize,circlePosY,circlePosX,new int[]{255,250,172,152});
-                text[0] = new Text("CLEARED", 0, 0, new int[]{255,184,125,143});
-                text[0] = new Text("CLEARED", 0, 0, new int[]{255,255,255,255});
-                text[0] = new Text("CLEARED", 0, 0, new int[]{255,250,172,152});
             }
         }
         for (int i = 0; i<circles.length; i++){
             drawMe.add(circles[i]);
-            drawMe.add(text[i]);
         }
+        drawMe.add(text);
         return drawMe;
     }
 

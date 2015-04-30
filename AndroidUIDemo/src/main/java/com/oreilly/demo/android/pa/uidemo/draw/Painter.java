@@ -111,9 +111,8 @@ public class Painter implements Visitor<Void> {
     public Void onText(Text t) {
         int [] c = t.getC();
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
-        paint.setColor(c[0]);
-        //may need to change this
-        paint.setTextSize(20);
+        paint.setARGB(c[0], c[1], c[2], c[3]);
+        paint.setTextSize(t.getTextSize());
         canvas.drawText(t.getText(), t.getX(), t.getY(), paint);
         return null;
     }

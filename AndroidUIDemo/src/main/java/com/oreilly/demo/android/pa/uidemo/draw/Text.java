@@ -22,7 +22,7 @@ public class Text implements DrawableObj {
      */
     public Text(String text, int x, int y, int[] c) {
         this.text = text;
-        this.textSize = textSize;
+        this.textSize = 5;
         this.c = c;
         this.x = x;
         this.y = y;
@@ -31,12 +31,14 @@ public class Text implements DrawableObj {
 
     public void setText(String text){
         this.text = text;
+
     }
     /**
      * @param textSize is the radius of the circle.
      */
     public void setTextSize(int textSize) {
         this.textSize = textSize;
+        x = x-(textSize/2);
     }
 
     /**
