@@ -33,7 +33,20 @@ public class Select implements State {
     private int choice = -1;
     private int frame = 0;
 
+    /**
+     *
+     * @param width width of device
+     * @param height height of device
+     * @return
+     */
     public Vector<DrawableObj> start(int width, int height)  { this.width = width; this.height = height; DrawSelect(); return toDraw;  }
+
+    /**
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return null
+     */
     public Vector<DrawableObj>  tap(int x, int y)  {
         if (preventInterruption) {
             switch (InArea(x, y)) {
@@ -54,6 +67,11 @@ public class Select implements State {
         }
         return null;
     }
+
+    /**
+     *
+     * @return draw objects
+     */
     public Vector<DrawableObj>  tick()  {
         if (frame == 45){
             sm.toGame(choice);
@@ -64,13 +82,29 @@ public class Select implements State {
         return toDraw;
     }
 
+    /**
+     *
+     * @param bundle THE Bundle bundle
+     * @return
+     */
     public Bundle save(Bundle bundle) { return bundle; }
+
+    /**
+     *
+     * @param width width of device
+     * @param height height of device
+     * @param bundle THE Bundle bundle
+     * @return drawable objects to draw
+     */
     public Vector<DrawableObj> load(int width, int height, Bundle bundle) { this.width = width; this.height = height; DrawSelect(); return toDraw;  }
 
     private int width = 0;
     private int height = 0;
     private Vector<DrawableObj> toDraw = new Vector<DrawableObj>();
 
+    /**
+     * Draw the borders of the first menu
+     */
     private void DrawSelect(){
         double percBorder = .1;
         double widthBased = 2*(width*percBorder);
@@ -99,6 +133,11 @@ public class Select implements State {
         DrawDots(255);
     }
 
+    /**
+     * Draw the dot and make it flash
+     *
+     * @param alpha opacity out of 255
+     */
     public void DrawDots(int alpha){
         double percBorder = .1;
         double widthBased = 2*(width*percBorder);
@@ -119,6 +158,12 @@ public class Select implements State {
         }
     }
 
+    /**
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return -1
+     */
     public int InArea(int x, int y){
         double percBorder = .1;
         double widthBased = 2*(width*percBorder);
@@ -152,6 +197,11 @@ public class Select implements State {
         return -1;
     }
 
+    /**
+     * expanding menu items to grow when clicked
+     *
+     * @return
+     */
     public boolean ExpandTransition(){
         frame++;
 
@@ -210,6 +260,15 @@ public class Select implements State {
         return  done;
     }
 
+    /**
+     * dimensions for the transitions
+     *
+     * @param wide width of object
+     * @param tall height of object
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return
+     */
     public int[] getDimensionsTransition(int wide, int tall, int x, int y){
         int blockTransitionFrames = 30;
         int offsetFrame = frame-15;
@@ -230,6 +289,10 @@ public class Select implements State {
         return new int[]{(int)(wideChange+wide),(int)(tallChange+tall),(int)transitionalX,(int)transitionalY};
     }
 
+    /**
+     *
+     * @param x set x
+     */
     public void setVar(int x){}
 }
 

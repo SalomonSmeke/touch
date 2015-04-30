@@ -22,6 +22,12 @@ public class StateWrapper implements StateOverlord {
     private int height;
     private Vector<DrawableObj> DrawMe = null;
 
+    /**
+     *
+     * @param painter painter object
+     * @param width width of device
+     * @param height height of device
+     */
     public StateWrapper (Painter painter, int width, int height){
         currentState = MENU;
         this.painter = painter;
@@ -31,17 +37,52 @@ public class StateWrapper implements StateOverlord {
     }
 
     //State actions
+
+    /**
+     *
+     * @param width width of device
+     * @param height height of device
+     */
     public void start(int width, int height)  { DrawMe = currentState.start(width, height);}
+
+    /**
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     */
     public void tap(int x, int y) { currentState.tap(x,y);}
+
+    /**
+     * draw the state per tick
+     */
     public void tick() { DrawMe = currentState.tick();}
+
+    /**
+     *
+     * @param bundle THE Bundle bundle
+     * @return save the bundle
+     */
     public Bundle save(Bundle bundle) { return currentState.save(bundle);}
+
+    /**
+     *
+     * @param bundle THE Bundle bundle
+     */
     public void load(Bundle bundle) { currentState.load(width, height, bundle);}
+
+    /**
+     * draw stuff to the painter
+     */
     public void draw(){
         for (int i = 0; i < DrawMe.size(); i++){
             DrawMe.get(i).accept(painter);
         }
     };
 
+    /**
+     *
+     * @param painter painter object
+     */
     public void setPainter(Painter painter){
         this.painter = painter;
     }
@@ -51,6 +92,10 @@ public class StateWrapper implements StateOverlord {
     private State GAME = new Game(this);
     private State END = new End(this);
 
+    /**
+     *
+     * @param state which state to set it as
+     */
     protected void setState(final State state) {
         this.currentState = state;
         this.start(width,height);

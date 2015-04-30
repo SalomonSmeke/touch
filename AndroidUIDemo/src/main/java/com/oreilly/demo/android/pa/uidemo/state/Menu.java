@@ -16,6 +16,10 @@ import com.oreilly.demo.android.pa.uidemo.draw.SquareF;
  */
 public class Menu implements State{
 
+    /**
+     *
+     * @param sm state machine
+     */
     public Menu(final StateView sm) {
         this.sm = sm;
     }
@@ -32,6 +36,12 @@ public class Menu implements State{
     int frameNo = 0;
     double animate = 0;
 
+    /**
+     *
+     * @param width width of device
+     * @param height height of device
+     * @return drawable objects
+     */
     public Vector<DrawableObj> start(int width, int height)  { this.width = width; this.height = height; DrawMenu(); return toDraw; }
     public Vector<DrawableObj> tap(int x, int y)  { if (inArea(x,y)) {
         tapped = true;
@@ -48,9 +58,26 @@ public class Menu implements State{
         }
         return toDraw;
     }
+
+    /**
+     *
+     * @param bundle THE Bundle bundle
+     * @return bundle for saving
+     */
     public Bundle save(Bundle bundle) { return bundle; }
+
+    /**
+     *
+     * @param width width of device
+     * @param height height of device
+     * @param bundle THE Bundle bundle
+     * @return drawable objects
+     */
     public Vector<DrawableObj> load(int width, int height, Bundle bundle) { this.width = width; this.height = height; DrawMenu(); return toDraw; }
 
+    /**
+     * Draw the menu items
+     */
     private void DrawMenu(){
         double percBorder = .1;
         double widthBased = 2*(width*percBorder);
@@ -70,6 +97,11 @@ public class Menu implements State{
         toDraw.add(new Square((int)(width-used - 20),(int)(height-used - 20),(int)(used2*percBorder + 10),(int)(used2*percBorder + 10), new int[]{255, 208, 247, 244}));
     }
 
+    /**
+     * Draw the transitions
+     *
+     * Super impressive
+     */
     private void DrawTransition(){
         frameNo++;
         double percBorder = .1;
@@ -109,6 +141,9 @@ public class Menu implements State{
         }
     }
 
+    /**
+     * draw the dot flashing
+     */
     private void DrawBreath(){
         if (animate > 30) growthToggle = true;
         if (animate < - 30) growthToggle = false;
@@ -144,6 +179,12 @@ public class Menu implements State{
 
     }
 
+    /**
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return was the coordinate in area? true/false
+     */
     private boolean inArea(int x, int y){
         double percBorder = .1;
         double widthBased = 2*(width*percBorder);
@@ -166,6 +207,10 @@ public class Menu implements State{
 
     }
 
+    /**
+     *
+     * @param x set x
+     */
     public void setVar(int x){}
 
 }
