@@ -36,7 +36,7 @@ public class progressBar {
     private int frame = 0;
     private int cycle = 0;
 
-    private final int maxCycle = 50;
+    private int maxCycle = 50;
 
     /**
      *
@@ -44,9 +44,11 @@ public class progressBar {
      * @param height height of device
      * @param c color for the bar
      */
-    public progressBar(int width, int height, int []c){
+    public progressBar(int width, int height, int []c, int difficulty){
         this.width = width;
         this.height = height;
+
+        maxCycle = maxCycle - difficulty*10;
 
         int gridSize = 0;
 

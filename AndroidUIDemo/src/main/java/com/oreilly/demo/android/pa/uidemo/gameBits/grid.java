@@ -189,7 +189,7 @@ public class grid {
 
     public grid(int width, int height, int difficulty){
 
-        sensitivity = 18-difficulty*3;
+        sensitivity = 11-difficulty*3;
 
         this.difficulty = difficulty;
         for (int x = 0; x < 5; x++){
@@ -372,8 +372,6 @@ public class grid {
                     }
 
                 }
-
-
                 return true;
             }
         }

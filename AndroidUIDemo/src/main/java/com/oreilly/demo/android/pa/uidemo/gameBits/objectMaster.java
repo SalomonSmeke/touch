@@ -48,7 +48,7 @@ public class objectMaster {
      */
     public Vector<DrawableObj> init() {
         Grid = new grid (width, height, difficulty);
-        Bar = new progressBar (width, height,new int[]{255, 243, 142, 150});
+        Bar = new progressBar (width, height,new int[]{255, 243, 142, 150}, difficulty);
 
         drawList.add(Background);
 
