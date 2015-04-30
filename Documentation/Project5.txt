@@ -14,4 +14,4 @@ With each piece of the project that we needed to build out, we decide to separat
 
 
 Concurrency:
-//needs completion
+We needed three separate threads to handle our project. There is one for tracking touches, that was there since the dot view skeleton. Then we added another for tracking time, it tracks changed to system time and updates the dotview accordingly. Finally theres the main thread, where the rest runs.
