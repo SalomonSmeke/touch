@@ -20,25 +20,18 @@ public class Text implements DrawableObj {
      * @param y      coordinate
      * @param c      is color
      */
-    public Text(String text, int x, int y, int[] c) {
+    public Text(String text, int x, int y, int[] c, int textSize) {
         this.text = text;
-        this.textSize = 5;
-        this.c = c;
+        this.textSize = textSize;
         this.x = x;
         this.y = y;
+        this.c = c;
     }
 
 
     public void setText(String text){
         this.text = text;
 
-    }
-    /**
-     * @param textSize is the radius of the circle.
-     */
-    public void setTextSize(int textSize) {
-        this.textSize = textSize;
-        x = x-(textSize/2);
     }
 
     /**

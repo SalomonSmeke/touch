@@ -110,10 +110,12 @@ public class Painter implements Visitor<Void> {
      */
     public Void onText(Text t) {
         int [] c = t.getC();
+        float width = 0;
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         paint.setARGB(c[0], c[1], c[2], c[3]);
         paint.setTextSize(t.getTextSize());
-        canvas.drawText(t.getText(), t.getX(), t.getY(), paint);
+        width = paint.measureText(t.getText());
+        canvas.drawText(t.getText(), t.getX()-width/2, (float)t.getY(), paint);
         return null;
     }
 

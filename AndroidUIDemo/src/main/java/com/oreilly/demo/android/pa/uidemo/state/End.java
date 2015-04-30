@@ -53,8 +53,7 @@ public class End implements State {
             int circlePosY = (int)(height/2.0);
             int circlePosX = gridLocation + gridSize + gridLocation/2;
 
-            text = new Text("CLEARED", width/2, height/2, new int[]{255,184,125,143});
-            text.setTextSize(height/4);
+            text = new Text("CLEARED", width/2, height/2, new int[]{255,184,125,143},height/8);
 
             if (circles.length == 1){
                 circles[0] = new CircleF(circleSize,circlePosX,circlePosY,new int[]{255,250,172,152});
@@ -76,8 +75,7 @@ public class End implements State {
             int circlePosY = (int)(width/2.0);
             int circlePosX = gridLocation + gridSize + gridLocation/2;
 
-            text = new Text("CLEARED", height/2, width/2, new int[]{255,184,125,143});
-            text.setTextSize(width/4);
+            text = new Text("CLEARED", width/2, height/2, new int[]{255,184,125,143},width/8);
 
             if (circles.length == 1){
                 circles[0] = new CircleF(circleSize,circlePosY,circlePosX,new int[]{255,250,172,152});
@@ -105,7 +103,7 @@ public class End implements State {
      * @param y y coordinate
      * @return null
      */
-    public Vector<DrawableObj> tap( int x, int y)  { return drawMe; }
+    public Vector<DrawableObj> tap( int x, int y)  { sm.toMenu(); return drawMe; }
 
     /**
      *
