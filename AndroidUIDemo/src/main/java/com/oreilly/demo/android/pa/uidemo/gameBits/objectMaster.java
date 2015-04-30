@@ -26,6 +26,12 @@ public class objectMaster {
     private progressBar Bar;
     private difficultyDisplay Difficulty;
 
+    /**
+     *
+     * @param width width of device
+     * @param height height of device
+     * @param difficulty difficulty level
+     */
     public objectMaster(int width, int height, int difficulty){
         this.difficulty = difficulty;
         this.width = width;
@@ -36,6 +42,10 @@ public class objectMaster {
         Background = new SquareF(width,height,0,0,clrs.get(difficulty));
     }
 
+    /**
+     *
+     * @return initialize draw list
+     */
     public Vector<DrawableObj> init() {
         Grid = new grid (width, height, difficulty);
         Bar = new progressBar (width, height,new int[]{255, 243, 142, 150});
@@ -48,6 +58,12 @@ public class objectMaster {
         return drawList;
     }
 
+    /**
+     *
+     * @param x x coordinate
+     * @param y y coordiante
+     * @return drawlist
+     */
     public Vector<DrawableObj> tap(int x, int y){
         drawList.clear();
         drawList.add(Background);
@@ -61,6 +77,10 @@ public class objectMaster {
         return drawList;
     }
 
+    /**
+     *
+     * @return tick the frame rate
+     */
     public Vector<DrawableObj> tick(){
         drawList.clear();
         drawList.add(Background);

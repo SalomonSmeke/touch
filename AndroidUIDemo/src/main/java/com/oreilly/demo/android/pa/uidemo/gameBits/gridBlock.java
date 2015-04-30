@@ -26,6 +26,14 @@ public class gridBlock {
     private int boxDimension;
     private int[] c;
 
+    /**
+     *
+     * @param width width of device
+     * @param height height of device
+     * @param cordinateX x coordinate
+     * @param cordinateY y coordinate
+     * @param c
+     */
     public gridBlock(int width, int height, int cordinateX, int cordinateY, int [] c){
         this.width = width;
         this.height = height;
@@ -51,22 +59,39 @@ public class gridBlock {
         square = new Square(boxDimension, boxDimension, x, y, c);
     }
 
-
+    /**
+     *
+     * @param dimension dimension of the larger grid
+     * @param cordinateX x coordinate
+     * @param cordinateY y coordinate
+     */
     private void calcBoxLocation(int dimension, int cordinateX, int cordinateY){
         boxDimension = (int)((dimension - (dimension * percBorder))/5.0);
         x = gridLocationX + boxDimension * cordinateX;
         y = gridLocationY + boxDimension * cordinateY;
     }
 
+    /**
+     *
+     * @return drawable square
+     */
     public Square getDrawable(){
 
         return square;
     }
 
+    /**
+     *
+     * @return base
+     */
     public int[] getBase(){
         return new int[]{gridLocationX, gridLocationY};
     }
 
+    /**
+     *
+     * @return color
+     */
     public int [] getColor(){
         return c;
     }

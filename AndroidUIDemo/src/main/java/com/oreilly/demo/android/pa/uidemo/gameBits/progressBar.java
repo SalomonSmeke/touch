@@ -38,6 +38,12 @@ public class progressBar {
 
     private final int maxCycle = 50;
 
+    /**
+     *
+     * @param width width of device
+     * @param height height of device
+     * @param c color for the bar
+     */
     public progressBar(int width, int height, int []c){
         this.width = width;
         this.height = height;
@@ -59,10 +65,12 @@ public class progressBar {
             linePos = gridLocation/3;
             line = new Line(minLengthLine,maxLengthLine,linePos,linePos,c);
         }
-
-
     }
 
+    /**
+     *
+     * @return drawable object
+     */
     public Vector<DrawableObj> tap(){
         Vector<DrawableObj> d = new Vector<DrawableObj>();
         d.clear();
@@ -70,6 +78,10 @@ public class progressBar {
         return d;
     }
 
+    /**
+     *
+     * @return tick the screen frames per tick
+     */
     public Vector<DrawableObj> tick(){
         frame++;
         if (cycle == maxCycle-1){
@@ -86,6 +98,9 @@ public class progressBar {
         return d;
     }
 
+    /**
+     * resize the bar depending on tick cycle
+     */
     public void resize(){
         if (line.getX1() == line.getX2()){
             line.setY1(line.getY1() + maxLengthLine/maxCycle/2);

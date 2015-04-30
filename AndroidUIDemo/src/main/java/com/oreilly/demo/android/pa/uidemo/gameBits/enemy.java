@@ -19,10 +19,20 @@ public class enemy {
     private int []baseCoordinates;
     private int boxSize;
 
+    /**
+     *
+     * @param c color
+     */
     public enemy(int [] c){
         this.c = c;
     }
 
+    /**
+     *
+     * @param coordinates x and y coordinates
+     * @param boxSize size of the box in the grid
+     * @param baseCoordinates coordinate of the base
+     */
     public void setDraw(int [] coordinates, int boxSize, int [] baseCoordinates){
         this.baseCoordinates = baseCoordinates;
         this.boxSize = boxSize;
@@ -34,6 +44,12 @@ public class enemy {
         circle = new CircleF(r,x,y,c);
     }
 
+    /**
+     *
+     * @param xin x coordinate
+     * @param yin y coordinate
+     * @return
+     */
     public boolean collide(int xin, int yin){
         if (xin>this.x-boxSize/2 && xin<this.x+boxSize/2 && yin<this.y+boxSize/2 && yin>this.y-boxSize/2){
             return true;
@@ -41,15 +57,27 @@ public class enemy {
         return false;
     }
 
+    /**
+     *
+     * @return color
+     */
     public int[] getColor(){
         return c;
     }
 
+    /**
+     *
+     * @param c color
+     */
     public void setColor(int [] c){
         circle = new CircleF(r,x,y,c);
         this.c = c;
     }
 
+    /**
+     *
+     * @return drawable circle object (the enemy itself)
+     */
     public DrawableObj getDrawable(){
         return circle;
     }
