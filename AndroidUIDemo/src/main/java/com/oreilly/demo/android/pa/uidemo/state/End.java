@@ -19,11 +19,48 @@ public class End implements State {
 
     private final StateView sm;
 
+    /**
+     *
+     * @param width width of screen
+     * @param height height of screen
+     * @return null
+     */
     public Vector<DrawableObj> start(int width, int height)  { return null; }
+
+    /**
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return null
+     */
     public Vector<DrawableObj> tap( int x, int y)  { return null; }
+
+    /**
+     *
+     * @return null
+     */
     public Vector<DrawableObj> tick()  { return null; }
+
+    /**
+     * used for saving the state
+     *
+     * @param bundle THE Bundle bundle
+     * @return bundle
+     */
     public Bundle save(Bundle bundle) { return bundle; }
+
+    /**
+     *
+     * @param width width of screen
+     * @param height height of screen
+     * @param bundle THE Bundle bundle
+     * @return null
+     */
     public Vector<DrawableObj> load(int width, int height, Bundle bundle) { return null; }
 
+    /**
+     *
+     * @param x x coordinate
+     */
     public void setVar(int x){}
 }

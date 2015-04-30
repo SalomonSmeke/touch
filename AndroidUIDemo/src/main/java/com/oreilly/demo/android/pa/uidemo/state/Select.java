@@ -18,6 +18,10 @@ import java.util.Vector;
 public class Select implements State {
 
 
+    /**
+     *
+     * @param sm state machine
+     */
     public Select(final StateView sm) {
         this.sm = sm;
     }

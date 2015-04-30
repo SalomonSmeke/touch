@@ -20,6 +20,10 @@ public class Game implements State {
 
     private Vector<DrawableObj> list = new Vector<DrawableObj>();
 
+    /**
+     *
+     * @param sm state machine
+     */
     public Game(final StateView sm) {
         this.sm = sm;
     }
@@ -28,24 +32,56 @@ public class Game implements State {
 
     private objectMaster gameView;
 
+    /**
+     *
+     * @param width width of device
+     * @param height height of device
+     * @return list of drawable objects
+     */
     public Vector<DrawableObj> start(int width, int height)  {
         gameView = new objectMaster(width,height,difficulty);
         list = gameView.init();
         return list;
     }
+
+    /**
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return list of drawable objects
+     */
     public Vector<DrawableObj> tap( int x, int y)  {
         list = gameView.tap(x,y);
         if (list == null){
             sm.toSelect();
         }
         return list; }
+
+    /**
+     *
+     * @return list of drawable objects
+     */
     public Vector<DrawableObj> tick()  {
         list = gameView.tick();
         if (list == null){
             sm.toSelect();
         }
         return list; }
+
+    /**
+     *
+     * @param bundle bundle, state machine saving
+     * @return bundle
+     */
     public Bundle save(Bundle bundle) { return bundle; }
+
+    /**
+     *
+     * @param width width of device
+     * @param height height of device
+     * @param bundle THE Bundle bundle
+     * @return null
+     */
     public Vector<DrawableObj> load(int width, int height, Bundle bundle) { return null; }
 
     public void setVar(int difficulty){this.difficulty = difficulty;}

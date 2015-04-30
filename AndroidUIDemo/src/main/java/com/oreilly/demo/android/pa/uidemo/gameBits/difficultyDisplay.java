@@ -34,6 +34,13 @@ public class difficultyDisplay {
     private int circleSize;
 
 
+    /**
+     * Draws the actual difficulty menu
+     *
+     * @param width width of screen
+     * @param height height of screen
+     * @param difficulty level of difficulty
+     */
     public difficultyDisplay(int width, int height, int difficulty){
         this.width = width;
         this.height = height;
@@ -88,10 +95,18 @@ public class difficultyDisplay {
         }
     }
 
+    /**
+     *
+     * @return draw object
+     */
     public Vector<DrawableObj> tap(){
         return drawMe;
     }
 
+    /**
+     *
+     * @return draw object
+     */
     public Vector<DrawableObj> tick(){
         return drawMe;
     }
