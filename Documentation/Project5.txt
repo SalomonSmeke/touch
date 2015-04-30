@@ -15,3 +15,26 @@ With each piece of the project that we needed to build out, we decide to separat
 
 Concurrency:
 We needed three separate threads to handle our project. There is one for tracking touches, that was there since the dot view skeleton. Then we added another for tracking time, it tracks changed to system time and updates the dotview accordingly. Finally theres the main thread, where the rest runs.
+
+Bugs:
+Moving enemies to adjacent blocks works as follows:
+
+We check the adjacent squares of a random enemy for occupancy.
+We move the enemy to one of the free ones randomly
+
+this involves a while loop. That continues to get a random location for the object to move towards until it is unoccupied.
+
+We initially ran into an issue, where upon reaching the while loop. Objects that had no free adjacent squares would get stuck in our while loops inifinitely. So. We added a very large and ugly if statement before the while loop.
+
+Essentially, if there are no free adjacent blocks. The movement operation should in theory leave the enemy where it is.
+
+However, there seems to be a flaw. Probably in our if statement. Where upon sometimes, the occupancy of all adjacent blocks is not caught.
+
+We have tried to fix it, but have not been able to yet. We will probably have it fixed by demo day on may 2. Please note, the bug manifests as a hang while in game. Level one will produce this the least.
+
+Scoring:
+Since out game is based on a strict time constraint rather than an enemy count. The score is displayed as remaining time on the "cleared" screen.
+
+Game mechanics:
+You pick a difficulty, and then have a limited amount of time to clear the dots. You may clear a dot if the color is within a range of the displayed colors at the bottom. Your time is up top.
+
