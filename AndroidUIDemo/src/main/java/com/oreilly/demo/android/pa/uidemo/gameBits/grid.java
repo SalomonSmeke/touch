@@ -178,6 +178,9 @@ public class grid {
 
     private int[] baseCoordinates;
 
+    private int frame;
+    private int perFrames = 3;
+
     private int difficulty;
 
     private int sensitivity;
@@ -219,6 +222,20 @@ public class grid {
         return new int[]{x,y};
     }
 
+    private int[] getCoordinatesR(int index){
+        Random rgen = new Random();
+        int x = rgen.nextInt(5);
+        int y = rgen.nextInt(5);
+
+        while(isContained(x,y)){
+            x = rgen.nextInt(5);
+            y = rgen.nextInt(5);
+        }
+        occupied.add(index,new int[]{x,y});
+        occupied.remove(index+1);
+        return new int[]{x,y};
+    }
+
     private boolean isContained(int x, int y){
         for (int i = 0; i < occupied.size(); i++){
             if (occupied.get(i)[0] == x && occupied.get(i)[1] == y) return true;
@@ -239,11 +256,20 @@ public class grid {
         enemies = new Vector<enemy>();
         Random rgen = new Random();
         for (int i = 0; i < size; i++){
-            enemies.add(i,new enemy(new int[]{255,243,142,150}));//Replace with color changer.
+            enemies.add(i,new enemy(new int[]{255,243,142,150}));
             enemies.get(i).setDraw(getCoordinates(), boxSize, baseCoordinates);
             enemies.get(i).setColor(clrs[rgen.nextInt(clrs.length)]);
-            dynamic.add(enemies.get(i).getDrawable());
+            dynamic.add(i, enemies.get(i).getDrawable());
         }
+    }
+
+    private void moveEnemies(int i){
+        Random rgen = new Random();
+            enemies.add(i,new enemy(enemies.get(i).getColor()));
+            enemies.remove(i+1);
+            enemies.get(i).setDraw(getCoordinatesR(i), boxSize, baseCoordinates);
+            dynamic.add(i, enemies.get(i).getDrawable());
+            dynamic.remove(i+1);
     }
 
     private boolean enemyAt(int x, int y){
@@ -260,31 +286,31 @@ public class grid {
         for (int i = 0; i < enemies.size(); i++){
             if(enemies.get(i).collide(x,y)){
                 if (difficulty == 0){
-                    if (enemies.get(i).getColor()[4]<67-sensitivity && enemies.get(i).getColor()[4]>67+sensitivity){
+                    if (enemies.get(i).getColor()[4]>67-sensitivity && enemies.get(i).getColor()[4]<67+sensitivity){
                         enemies.remove(i);
                         return true;
                     }
                 }
                 if (difficulty == 1){
-                    if ((enemies.get(i).getColor()[4]>146-sensitivity) && enemies.get(i).getColor()[4]>0+sensitivity){
+                    if ((enemies.get(i).getColor()[4]<146-sensitivity) && enemies.get(i).getColor()[4]>0+sensitivity){
                         enemies.remove(i);
                         return true;
                     }
-                    if (enemies.get(i).getColor()[4]<117-sensitivity && enemies.get(i).getColor()[4]>117+sensitivity){
+                    if (enemies.get(i).getColor()[4]>117-sensitivity && enemies.get(i).getColor()[4]<117+sensitivity){
                         enemies.remove(i);
                         return true;
                     }
                 }
                 if (difficulty == 2){
-                    if ((enemies.get(i).getColor()[4]>146-sensitivity) && enemies.get(i).getColor()[4]>0+sensitivity){
+                    if ((enemies.get(i).getColor()[4]<146-sensitivity) && enemies.get(i).getColor()[4]>0+sensitivity){
                         enemies.remove(i);
                         return true;
                     }
-                    if (enemies.get(i).getColor()[4]<67-sensitivity && enemies.get(i).getColor()[4]>67+sensitivity){
+                    if (enemies.get(i).getColor()[4]>67-sensitivity && enemies.get(i).getColor()[4]<67+sensitivity){
                         enemies.remove(i);
                         return true;
                     }
-                    if (enemies.get(i).getColor()[4]<117-sensitivity && enemies.get(i).getColor()[4]>117+sensitivity){
+                    if (enemies.get(i).getColor()[4]>117-sensitivity && enemies.get(i).getColor()[4]<117+sensitivity){
                         enemies.remove(i);
                         return true;
                     }
@@ -322,10 +348,19 @@ public class grid {
     }
 
     public Vector<DrawableObj> tick(){
-        for (int i = 0; i < enemies.size(); i++){
+        if (frame > 100){
+            frame = 0;
+        }
+        frame++;
+        if (frame % perFrames == 0) {
+            for (int i = 0; i < enemies.size(); i++) {
+                nextColor(i);
 
-            nextColor(i);
-
+            }
+        }
+        if (frame == 99) {
+            Random rgen = new Random();
+            moveEnemies(rgen.nextInt(enemies.size()));
         }
         reAdd();
         return drawMe;
