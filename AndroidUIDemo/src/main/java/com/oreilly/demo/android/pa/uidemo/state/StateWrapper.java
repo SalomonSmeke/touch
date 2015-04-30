@@ -124,6 +124,10 @@ public class StateWrapper implements StateOverlord {
         setState(END);
     }
 
+    public State getState(){
+        return currentState;
+    }
+
     //State saving
     //TODO Loading & Saving States
     //State loading
